@@ -1,0 +1,159 @@
+{
+  "products": [
+    {
+      "slug": "book",
+      "name": "Who the Hell Put Me in Charge?!",
+      "eyebrow": "The book",
+      "summary": "The real-life caregiver survival guide and command center. Medications, appointments, paperwork, and the rest of what nobody warns you about.",
+      "details": "One day you’re living your normal life. The next, you’re managing medications, appointments, equipment, paperwork, symptoms, and phone calls. This is the survival guide and command center built in the middle of that. Inside: tools for medications, appointments, medical information, contacts, equipment, daily care, and hospital stays.",
+      "priceLabel": "See price on Amazon",
+      "cta": "Buy on Amazon",
+      "href": "https://www.amazon.com/dp/B0HLTRGHLT?lv=shuf&linkCode=ml1&linkId=b235e14b41bc7c2abe858e1701eb65c6&gaOptInStatus=true&tag=stormijxo-20&channelId=704&ref_=cm_sw_r_as_gl_api_gl_i_ARV1NHEF9WCVVVRH5BQQ&plpRedirect=mhFallback",
+      "external": true,
+      "image": "/images/book-cover.jpg",
+      "imageAlt": "Book cover of Who the Hell Put Me in Charge?! by Stormi J.",
+      "width": 1000,
+      "height": 1250,
+      "featured": true,
+      "feature": true,
+      "backImage": "/images/book-back.jpg",
+      "backImageAlt": "Back cover of Who the Hell Put Me in Charge?!, with the line Nobody gave you a damn manual.",
+      "backWidth": 600,
+      "backHeight": 750,
+      "freeDownload": false,
+      "fileName": ""
+    },
+    {
+      "slug": "medication-command-center",
+      "name": "The Medication Command Center",
+      "eyebrow": "Printable",
+      "summary": "A simple system for medications, schedules, changes, PRNs, and refills. Because “I think I gave it to her” isn’t a medication system.",
+      "details": "A printable for the bottles, the schedule, the changes, the PRNs, and the refills. Built for the moment someone asks, “Wait… did we already give that?” Find it in the UUO Etsy shop.",
+      "priceLabel": "See price on Etsy",
+      "cta": "Shop on Etsy",
+      "href": "https://www.etsy.com/shop/UUOrganized",
+      "external": true,
+      "image": "/images/medication-command-center.jpg",
+      "imageAlt": "Title page of The Medication Command Center printable.",
+      "width": 791,
+      "height": 669,
+      "featured": true,
+      "feature": false,
+      "freeDownload": false,
+      "fileName": ""
+    },
+    {
+      "slug": "first-48-hours",
+      "name": "First 48 Hours Home",
+      "eyebrow": "Free checklist",
+      "summary": "Don’t forget this shit. A one-page sheet for the first two days at home: safety, medications, who to call, follow-up, paperwork, and the first night.",
+      "details": "The checklist for the person who just got handed discharge papers and a house that isn’t ready. Leave your email and it downloads right away.",
+      "priceLabel": "Free",
+      "cta": "Get the checklist",
+      "href": "/#checklist",
+      "external": false,
+      "image": "/images/checklist-teaser.jpg",
+      "imageAlt": "Top of the First 48 Hours Home checklist.",
+      "width": 796,
+      "height": 226,
+      "featured": false,
+      "feature": false,
+      "freeDownload": false,
+      "fileName": ""
+    }
+  ],
+  "socials": [
+    {
+      "name": "Instagram",
+      "href": "https://www.instagram.com/unhinged.unfiltered.organized/"
+    },
+    {
+      "name": "Facebook",
+      "href": ""
+    },
+    {
+      "name": "X",
+      "href": ""
+    },
+    {
+      "name": "TikTok",
+      "href": "https://www.tiktok.com/@uuorganized"
+    },
+    {
+      "name": "Pinterest",
+      "href": ""
+    },
+    {
+      "name": "YouTube",
+      "href": ""
+    }
+  ],
+  "shops": {
+    "amazon": "https://www.amazon.com/dp/B0HLTRGHLT?lv=shuf&linkCode=ml1&linkId=b235e14b41bc7c2abe858e1701eb65c6&gaOptInStatus=true&tag=stormijxo-20&channelId=704&ref_=cm_sw_r_as_gl_api_gl_i_ARV1NHEF9WCVVVRH5BQQ&plpRedirect=mhFallback",
+    "etsy": "https://www.etsy.com/shop/UUOrganized"
+  },
+  "copy": {
+    "description": "Practical systems for the shit nobody tells you about. The book, printables, and tools by Stormi J.",
+    "promoMessage": "",
+    "promoCode": "",
+    "homeEyebrow": "Unhinged. Unfiltered. Organized.",
+    "homeHeadline": "Real. Ready.",
+    "homeHeadlineEm": "Slightly unhinged.",
+    "homeLede": "Practical systems for the shit nobody tells you about.",
+    "homePrimaryCta": "Shop the Tools",
+    "homePrimaryHref": "/shop",
+    "homeSecondaryCta": "Get the free checklist",
+    "homeSecondaryHref": "#checklist",
+    "heroImage": "/images/book-cover.jpg",
+    "heroImageAlt": "Book cover of Who the Hell Put Me in Charge?! by Stormi J.",
+    "heroCaption": "Who the Hell Put Me in Charge?! · Stormi J.",
+    "heroWidth": 1000,
+    "heroHeight": 1250,
+    "principles": [
+      "Plan",
+      "Organize",
+      "Survive",
+      "Repeat"
+    ],
+    "toolsEyebrow": "The tools",
+    "toolsHeading": "The book, and a place to put the medications.",
+    "storyEyebrow": "Why I started",
+    "storyHeading": "I built the tools I couldn’t find.",
+    "storyBody": "My mom had a stroke. One day I was living my life. The next, I was in charge of medications, appointments, equipment, paperwork, and everything else that showed up with it.\r\nUUO started there. Caregiving was the first mess. The brand is for the rest of real life too.",
+    "storyLinkText": "Read the story",
+    "storyLinkHref": "/about",
+    "storyImage": "/images/stormi.jpg",
+    "storyImageAlt": "Stormi J holding her book, Who the Hell Put Me in Charge?!",
+    "checklistEyebrow": "Free",
+    "checklistHeading": "First 48 Hours Home.",
+    "checklistAttitude": "Don’t forget this shit.",
+    "checklistBody": "The one-page checklist for the day someone comes home and the house is not ready. Write it down. Handle one damn thing at a time.",
+    "checklistButton": "Send me the checklist",
+    "checklistNote": "New printables and the occasional discount go to this list first.",
+    "checklistImage": "/images/checklist-teaser.jpg",
+    "checklistImageAlt": "Top of the First 48 Hours Home checklist: Don’t forget this shit.",
+    "checklistWidth": 796,
+    "checklistHeight": 226,
+    "aboutEyebrow": "About",
+    "aboutHeading": "Nobody gave me a damn manual.",
+    "aboutBody": "My mom had a stroke. One day I was living my normal life. The next, I was responsible for everything. Medications. Appointments. Equipment. Paperwork. Symptoms. Phone calls. And a pile of other things nobody warns you about.\r\nI looked for a system. Somewhere to put the list, the bottles, the questions, and the “did we already give that?” I couldn’t find one that sounded like real life. So I built it.\r\nWho the Hell Put Me in Charge?! came out of that. So did the printables. Caregiving is where Unhinged. Unfiltered. Organized. started. It is growing into practical systems for the other things life throws at you. A home. A crisis. The ordinary chaos.",
+    "aboutQuote": "You don’t have to have it all together. You just need somewhere to put it all.",
+    "aboutNote": "From the back of the book. One damn thing at a time.",
+    "aboutPoints": "Real-life experience\r\nPractical tools\r\nReady-to-use worksheets\r\nA little humor, because you have to",
+    "aboutPrimaryCta": "Shop the Tools",
+    "aboutPrimaryHref": "/shop",
+    "aboutSecondaryCta": "Get the free checklist",
+    "aboutSecondaryHref": "/#checklist",
+    "shopEyebrow": "Shop",
+    "shopHeading": "Shop the tools.",
+    "shopLede": "The book, the printables, and room for whatever life requires next.",
+    "shopLaterEyebrow": "Coming next",
+    "shopLaterHeading": "More than a caregiver book.",
+    "shopLaterBody": "Planners, checklists, and practical systems for the rest of real life. New printables show up in the Etsy shop first. The book stays on Amazon.",
+    "shopLaterCta": "Browse the Etsy shop",
+    "shopLaterHref": "https://www.etsy.com/shop/UUOrganized",
+    "contactEyebrow": "Contact",
+    "contactHeading": "Say it plain.",
+    "contactBody": "Questions, a shop you want linked, a correction, or the story you need to get out. Send it."
+  }
+}
