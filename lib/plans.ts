@@ -3,7 +3,7 @@ import { signupHref, type AppInterval } from "./app-links";
 /**
  * Public beta prices and allowances.
  * Source of truth: UUO App `src/domain/billing-catalog.ts`.
- * Compared fields are care recipients, members, family sharing,
+ * Compared fields are people you care for, caregiver spots, family sharing,
  * AI allowance, documents, storage, exports, and advanced reminders.
  */
 export type BillingInterval = AppInterval;
@@ -46,7 +46,7 @@ export const planOffers: PlanOffer[] = [
     key: "free",
     name: "Free",
     outcome: "Get organized.",
-    summary: "1 care recipient, 2 members.",
+    summary: "1 person you care for, 2 caregiver spots.",
     audience: "See whether one place for care actually helps.",
     monthlyPrice: "$0",
     annualPrice: "$0",
@@ -55,8 +55,8 @@ export const planOffers: PlanOffer[] = [
     cta: "Start Free",
     ctaId: "start-free",
     points: [
-      "1 care recipient",
-      "2 members",
+      "1 person you care for",
+      "2 caregiver spots",
       "Limited AI assistance, 10 a month",
       "250 MB for documents",
       "Basic reminders",
@@ -64,21 +64,21 @@ export const planOffers: PlanOffer[] = [
   },
   {
     key: "command-center",
-    name: "Command Center",
+    name: "Caregiver",
     outcome: "I manage care.",
-    summary: "1 care recipient, 4 members, generous AI, and individual organization tools.",
+    summary: "1 person you care for, 4 caregiver spots, generous AI, and individual organization tools.",
     audience: "For the person who keeps the list, with room for a few people helping.",
     monthlyPrice: "$11.99",
     annualPrice: "$119.99",
     monthlyHref: signupHref("command-center", "monthly"),
     annualHref: signupHref("command-center", "annual"),
-    cta: "Choose Command Center",
+    cta: "Choose Caregiver",
     ctaId: "choose-command-center",
     featured: true,
     annualNote: "The yearly price is about ten months of the monthly price.",
     points: [
-      "1 care recipient",
-      "4 members",
+      "1 person you care for",
+      "4 caregiver spots",
       "Generous AI assistance, 100 a month",
       "2 GB for documents",
       "Exports and advanced reminders",
@@ -86,20 +86,20 @@ export const planOffers: PlanOffer[] = [
   },
   {
     key: "family",
-    name: "Family",
+    name: "Caregiver Family",
     outcome: "We manage care.",
-    summary: "3 care recipients, 10 members, messaging, collaboration, and expanded AI.",
+    summary: "Up to 3 people you care for, 10 caregiver spots, messaging, collaboration, and expanded AI.",
     audience: "For the people sharing the list, the messages, and the handoffs.",
     monthlyPrice: "$19.99",
     annualPrice: "$199.99",
     monthlyHref: signupHref("family", "monthly"),
     annualHref: signupHref("family", "annual"),
-    cta: "Choose Family",
+    cta: "Choose Caregiver Family",
     ctaId: "choose-family",
     annualNote: "The yearly price is about ten months of the monthly price.",
     points: [
-      "3 care recipients",
-      "10 members",
+      "Up to 3 people you care for",
+      "10 caregiver spots",
       "Messaging and family collaboration",
       "Expanded AI assistance, 300 a month",
       "10 GB for documents",
@@ -169,22 +169,22 @@ export const planComparison: PlanComparisonGroup[] = [
         values: onEveryPlan,
       },
       {
-        label: "Members",
+        label: "Caregiver spots",
         values: [
-          { text: "Up to 2", tone: "limited" },
-          { text: "Up to 4", tone: "in" },
-          { text: "Up to 10", tone: "in" },
+          { text: "2 caregiver spots", tone: "limited" },
+          { text: "4 caregiver spots", tone: "in" },
+          { text: "10 caregiver spots", tone: "in" },
         ],
       },
       {
-        label: "Care recipients",
+        label: "People you care for",
         values: [
-          { text: "1", tone: "limited" },
-          { text: "1", tone: "limited" },
-          { text: "3", tone: "in" },
+          { text: "1 person you care for", tone: "limited" },
+          { text: "1 person you care for", tone: "limited" },
+          { text: "Up to 3 people you care for", tone: "in" },
         ],
       },
-      { label: "Roles and recipient access", values: onEveryPlan },
+      { label: "Roles and access", values: onEveryPlan },
       { label: "Task ownership and handoffs", values: onEveryPlan },
       {
         label: "Family messaging",
@@ -198,7 +198,7 @@ export const planComparison: PlanComparisonGroup[] = [
       { label: "Typed Quick Capture", values: onEveryPlan },
       { label: "Voice Quick Capture", values: onEveryPlan },
       { label: "Medication photo extraction", values: onEveryPlan },
-      { label: "Ask Command Center", values: onEveryPlan },
+      { label: "Ask UUO", values: onEveryPlan },
       { label: "Appointment prep and handoff help", values: onEveryPlan },
       { label: "Monthly review and change summaries", values: onEveryPlan },
       {
@@ -230,19 +230,19 @@ export const planComparison: PlanComparisonGroup[] = [
     title: "Capacity",
     rows: [
       {
-        label: "Care recipients",
+        label: "People you care for",
         values: [
-          { text: "1 care recipient", tone: "limited" },
-          { text: "1 care recipient", tone: "limited" },
-          { text: "3 care recipients", tone: "in" },
+          { text: "1 person you care for", tone: "limited" },
+          { text: "1 person you care for", tone: "limited" },
+          { text: "Up to 3 people you care for", tone: "in" },
         ],
       },
       {
-        label: "Members",
+        label: "Caregiver spots",
         values: [
-          { text: "2 members", tone: "limited" },
-          { text: "4 members", tone: "in" },
-          { text: "10 members", tone: "in" },
+          { text: "2 caregiver spots", tone: "limited" },
+          { text: "4 caregiver spots", tone: "in" },
+          { text: "10 caregiver spots", tone: "in" },
         ],
       },
     ],

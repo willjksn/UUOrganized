@@ -6,14 +6,14 @@ import { signupHref } from "@/lib/app-links";
 import { site } from "@/lib/site";
 
 const description =
-  "The Caregiver Command Center keeps today, medications, supplies, calls, documents, and the people helping in one place. The book teaches the system. The app helps you run it.";
+  "The UU Organized app keeps today, medications, supplies, calls, documents, and the people helping in one place. The book teaches the system. The app helps you run it.";
 
 export const metadata: Metadata = {
-  title: "Caregiver Command Center",
+  title: "The UU Organized App",
   description,
   alternates: { canonical: "/command-center" },
   openGraph: {
-    title: "Caregiver Command Center",
+    title: "The UU Organized App",
     description,
     url: "/command-center",
     type: "website",
@@ -167,7 +167,7 @@ const chapters = [
       },
       {
         title: "Exports",
-        body: "Command Center and Family can export. Free keeps the records in the app.",
+        body: "Caregiver and Caregiver Family can export. Free keeps the records in the app.",
       },
     ],
   },
@@ -185,7 +185,7 @@ const chapters = [
       },
       {
         title: "The people in the workspace",
-        body: "Members have roles. Access can be limited to the care recipients a person is actually helping.",
+        body: "People helping have roles. Access can be limited to the people someone is actually helping.",
       },
       {
         title: "Handoffs",
@@ -193,7 +193,7 @@ const chapters = [
       },
       {
         title: "Messages",
-        body: "A private place for everyone, for one care team, for a few people, or for one person. Important messages can be marked. Messaging is part of the Family plan.",
+        body: "A private place for everyone, for one care team, for a few people, or for one person. Important messages can be marked. Messaging is part of Caregiver Family.",
       },
     ],
   },
@@ -233,7 +233,7 @@ const chapters = [
     items: [
       {
         title: "Type it",
-        body: "Write what is going on in plain language. The Command Center sorts it toward the list it belongs on. You still confirm the result.",
+        body: "Write what is going on in plain language. The app sorts it toward the list it belongs on. You still confirm the result.",
       },
       {
         title: "Say it",
@@ -243,9 +243,31 @@ const chapters = [
         title: "Photograph it",
         body: "A medication label is read as a draft. A package photo can suggest a supply. You review it before anything is kept.",
       },
+    ],
+  },
+  {
+    id: "ask",
+    band: "band",
+    eyebrow: "Ask UUO",
+    title: "Ask about what's already written down, then keep the conversation going.",
+    intro:
+      "Pronounced \"you-oh.\" Answers are grounded in the UU Organized records you're allowed to see, and they point back to those records. Ask UUO does not diagnose, and it does not change a record on its own.",
+    items: [
       {
-        title: "Ask Command Center",
-        body: "Questions stay tied to the records you can already see. Ask what needs attention, what changed, or for help preparing a visit, a handoff, or the monthly review.",
+        title: "Ask",
+        body: "What changed this week? What needs my attention? What are we waiting on? What's coming up?",
+      },
+      {
+        title: "Then keep going",
+        body: "What happened with that insurance call? When should I follow up? What changed since the last appointment?",
+      },
+      {
+        title: "It can also open",
+        body: "Appointment Prep, a caregiver handoff, the Monthly Care Review, a recent-change summary, or a message draft where messaging is included.",
+      },
+      {
+        title: "You still decide",
+        body: "Quick Capture is the separate path for adding something new. A write or a message still waits for the review you already use.",
       },
     ],
   },
@@ -277,7 +299,7 @@ export default function CommandCenterPage() {
   const jsonLd = {
     "@context": "https://schema.org",
     "@type": "WebPage",
-    name: "Caregiver Command Center",
+    name: "The UU Organized App",
     url: `${site.url}/command-center`,
     description,
     isPartOf: { "@type": "WebSite", name: site.name, url: site.url },
@@ -288,7 +310,7 @@ export default function CommandCenterPage() {
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
       <section className="section">
         <div className="wrap narrow">
-          <p className="eyebrow">Caregiver Command Center</p>
+          <p className="eyebrow">The UU Organized App</p>
           <h1>One place for the care you are already holding.</h1>
           <Brush />
           <p className="lede">
@@ -337,24 +359,24 @@ export default function CommandCenterPage() {
             <p className="eyebrow">How the plans fit</p>
             <h2 id="plans-heading">Start with one person. Make room when the list grows.</h2>
             <p className="lede">
-              Who&apos;s got this? is on every plan. Family is the larger team, and the one with messaging.
+              Who&apos;s got this? is on every plan. Caregiver Family is the larger team, and the one with messaging.
             </p>
           </div>
           <div className="detail-grid detail-grid-plans">
             <article>
               <p className="eyebrow">Free</p>
               <h3>Get organized.</h3>
-              <p>1 care recipient and 2 members. Limited AI assistance, so you can see whether one place for care actually helps.</p>
+              <p>1 person you care for and 2 caregiver spots. Limited AI assistance, so you can see whether one place for care actually helps.</p>
             </article>
             <article>
-              <p className="eyebrow">Command Center</p>
+              <p className="eyebrow">Caregiver</p>
               <h3>I manage care.</h3>
-              <p>1 care recipient and 4 members, with generous AI, exports, and advanced reminders for the person keeping the list.</p>
+              <p>1 person you care for and 4 caregiver spots, with generous AI, exports, and advanced reminders for the person keeping the list.</p>
             </article>
             <article>
-              <p className="eyebrow">Family</p>
+              <p className="eyebrow">Caregiver Family</p>
               <h3>We manage care.</h3>
-              <p>3 care recipients and 10 members, with messaging, family collaboration, and expanded AI for the people sharing the care.</p>
+              <p>Up to 3 people you care for and 10 caregiver spots, with messaging, family collaboration, and expanded AI for the people sharing the care.</p>
             </article>
           </div>
           <div className="actions">
@@ -382,16 +404,16 @@ export default function CommandCenterPage() {
             <p className="eyebrow">The book and the app</p>
             <h2 id="book-heading">The book teaches the system. The app helps you run it.</h2>
             <p>
-              <em>Who the Hell Put Me in Charge?!</em> stays a book you can buy on its own. The Caregiver
-              Command Center is the digital tool inspired by that caregiving system. You do not need the
-              app to use the book, and you do not need the book to start the app.
+              <em>Who the Hell Put Me in Charge?!</em> stays a book you can buy on its own. The UU Organized
+              app is the digital tool inspired by that caregiving system. You do not need the app to use
+              the book, and you do not need the book to start the app.
             </p>
             <div className="actions">
               <Link className="button button-ghost" href="/shop#book">
                 Shop the book
               </Link>
               <a className="button" href={signupHref("free")} data-cta="start-free">
-                Try the Caregiver Command Center Free
+                Try the app free
               </a>
             </div>
           </div>

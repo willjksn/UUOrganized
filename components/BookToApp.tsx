@@ -7,13 +7,13 @@ export function BookToApp({ compact = false }: { compact?: boolean }) {
       <p className="book-line">The book teaches the system. The app helps you run it.</p>
       {compact ? null : (
         <p>
-          <em>Who the Hell Put Me in Charge?!</em> stays a book you can buy on its own. The Caregiver
-          Command Center is the digital tool inspired by that caregiving system.
+          <em>Who the Hell Put Me in Charge?!</em> stays a book you can buy on its own. The UU Organized
+          app is the digital tool inspired by that caregiving system.
         </p>
       )}
       <p className="book-app-links">
         <Link href="/command-center" data-cta="explore-command-center">Explore the Command Center</Link>
-        <a href={signupHref("free")} data-cta="start-free">Try the Caregiver Command Center Free</a>
+        <a href={signupHref("free")} data-cta="start-free">Try the app free</a>
       </p>
     </div>
   );

@@ -6,7 +6,7 @@ import { planComparison, planOffers } from "@/lib/plans";
 import { site } from "@/lib/site";
 
 const description =
-  "Free, Command Center, and Family plans for the UU Organized Caregiver Command Center. Start free, or choose monthly or annual billing in the app.";
+  "Free, Caregiver, and Caregiver Family plans for the UU Organized app. Start free, or choose monthly or annual billing in the app.";
 
 export const metadata: Metadata = {
   title: "Pricing",
@@ -24,7 +24,7 @@ export default function PricingPage() {
   const jsonLd = {
     "@context": "https://schema.org",
     "@type": "WebPage",
-    name: "Caregiver Command Center pricing",
+    name: "UU Organized pricing",
     url: `${site.url}/pricing`,
     description,
     isPartOf: { "@type": "WebSite", name: site.name, url: site.url },
@@ -40,8 +40,8 @@ export default function PricingPage() {
             <h1>Start free. Make room when the list gets bigger.</h1>
             <Brush />
             <p className="lede">
-              Free is for getting one care recipient organized. Command Center is for the person managing
-              the care. Family is for the people managing it together.
+              Free is for getting one person you care for organized. Caregiver is for the person managing
+              the care. Caregiver Family is for the people managing it together.
             </p>
             <p>
               Choosing a plan opens the app so you can sign up. Paid plans continue to checkout there,

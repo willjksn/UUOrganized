@@ -107,11 +107,11 @@ export default async function HomePage() {
       <section className="section band" aria-labelledby="command-home-heading">
         <div className="wrap">
           <div className="section-head">
-            <p className="eyebrow">Caregiver Command Center</p>
+            <p className="eyebrow">The UU Organized App</p>
             <h2 id="command-home-heading">The book teaches the system. The app helps you run it.</h2>
             <p className="lede">
-              Open the Command Center when the list is still in your head: the dose, the appointment, the
-              reference number, and who is taking the next turn.
+              Open the app when the list is still in your head: the dose, the appointment, the reference
+              number, and who is taking the next turn.
             </p>
           </div>
           <div className="command-preview">
@@ -137,7 +137,7 @@ export default async function HomePage() {
             </article>
             <article>
               <h3>Say it once</h3>
-              <p>Type it, say it, or photograph it. Ask later about what is already written down.</p>
+              <p>Type it, say it, or photograph it. Ask UUO later about what is already written down.</p>
             </article>
           </div>
           <div className="actions">

@@ -192,8 +192,10 @@ export function fillCopy(value: unknown): SiteCopy {
   return copy;
 }
 
-const legacyDescription =
-  "Practical systems for the shit nobody tells you about. The book, printables, and tools by Stormi J.";
+const legacyDescriptions = new Set([
+  "Practical systems for the shit nobody tells you about. The book, printables, and tools by Stormi J.",
+  "Practical systems for the shit nobody tells you about. The book, printables, and Caregiver Command Center by Stormi J.",
+]);
 
 export function withPublicHome(copy: SiteCopy): SiteCopy {
   const defaults = defaultCopy();
@@ -201,7 +203,7 @@ export function withPublicHome(copy: SiteCopy): SiteCopy {
     copy.homeHeadline === "Real. Ready." &&
     copy.homePrimaryCta === "Shop the Tools" &&
     copy.homePrimaryHref.replace(/\/$/, "") === "/shop";
-  const description = copy.description === legacyDescription ? defaults.description : copy.description;
+  const description = legacyDescriptions.has(copy.description) ? defaults.description : copy.description;
   if (!legacyHero) return { ...copy, description };
   return {
     ...copy,
