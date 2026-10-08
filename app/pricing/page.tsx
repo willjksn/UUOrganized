@@ -49,10 +49,13 @@ export default function PricingPage() {
               in the <Link href="/shop">shop</Link>.
             </p>
           </div>
-          <PricingBoard plans={planOffers} rows={planComparison} />
+          <PricingBoard plans={planOffers} groups={planComparison} />
           <p className="fine pricing-foot">
-            Prices are in US dollars. <Link href="/command-center">Explore the Command Center</Link> before
-            you decide.
+            Prices are in US dollars.{" "}
+            <Link href="/command-center" data-cta="explore-command-center">
+              Explore the Command Center
+            </Link>{" "}
+            before you decide.
           </p>
         </div>
       </section>

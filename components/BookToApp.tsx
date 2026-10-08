@@ -12,8 +12,8 @@ export function BookToApp({ compact = false }: { compact?: boolean }) {
         </p>
       )}
       <p className="book-app-links">
-        <Link href="/command-center">Explore the Command Center</Link>
-        <a href={signupHref("free")}>Start Free</a>
+        <Link href="/command-center" data-cta="explore-command-center">Explore the Command Center</Link>
+        <a href={signupHref("free")} data-cta="start-free">Try the Caregiver Command Center Free</a>
       </p>
     </div>
   );

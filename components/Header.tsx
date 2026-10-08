@@ -44,7 +44,7 @@ export function Header() {
                 );
               })}
               <li>
-                <a href={loginHref}>Log In</a>
+                <a href={loginHref} data-cta="login">Log In</a>
               </li>
             </ul>
           </nav>

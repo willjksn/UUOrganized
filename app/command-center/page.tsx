@@ -6,7 +6,7 @@ import { signupHref } from "@/lib/app-links";
 import { site } from "@/lib/site";
 
 const description =
-  "A place for the caregiving list that used to live in your head: medications, appointments, calls, supplies, and the people helping.";
+  "The Caregiver Command Center keeps today, medications, supplies, calls, documents, and the people helping in one place. The book teaches the system. The app helps you run it.";
 
 export const metadata: Metadata = {
   title: "Caregiver Command Center",
@@ -22,102 +22,226 @@ export const metadata: Metadata = {
 
 const chapters = [
   {
-    id: "day",
-    eyebrow: "The day you are actually in",
-    title: "Today is the list. The rest has a room of its own.",
+    id: "today",
+    band: "",
+    eyebrow: "Stay on top of today",
+    title: "One place for what needs you now.",
     intro:
-      "The mental load is not one task. It is the appointment, the refill, the call you are waiting on, and the date you said you would check back, all at once. The Command Center keeps those apart so Today can show what needs you.",
+      "The load is not one task. It is the visit, the refill, the thing you are waiting on, and the date you said you would check back. Today gathers that into the day you are actually in.",
     items: [
       {
         title: "Today",
-        body: "Today gathers medications, visits, follow-ups, and waiting items into the day you are in. If the day is clear, it stays clear. New things show up here when they have a time or a person attached.",
+        body: "Medications, visits, follow-ups, and waiting items land on Today. If the day is clear, it stays clear.",
+      },
+      {
+        title: "Needs Attention",
+        body: "Start with what is due, low, incomplete, or waiting. The rest of the day can wait its turn.",
       },
       {
         title: "Calendar",
-        body: "Doctor visits, therapy, home health, rides, deliveries, and your own time live on the calendar. An appointment is a record you enter: who it is with, when it is, and why you are going.",
-      },
-      {
-        title: "Follow-ups",
-        body: "A follow-up is the date you said you would check back. A call, a waiting item, or a delivery can leave that date here, so it is not only a promise you made out loud.",
-      },
-      {
-        title: "Waiting On",
-        body: "Waiting On is for the thing stuck in somebody else’s hands. The callback, the authorization, the delivery. You can see what you are waiting for without scrolling a text thread to find it.",
-      },
-    ],
-  },
-  {
-    id: "bottles",
-    eyebrow: "The bottles and the boxes",
-    title: "The medication list, and the stuff you cannot run out of.",
-    intro:
-      "The app stores what you enter. It does not change a dose, start or stop a medication, or give medical advice. You review every field before it is saved.",
-    items: [
-      {
-        title: "Medications",
-        body: "Keep the name, the instructions, the times, and the refill notes you are trying to hold straight. This is the list for the moment someone asks, “Did we already give that?”",
-      },
-      {
-        title: "A photo of the label",
-        body: "Photograph the label or upload a picture. The reading is a draft. You check every field, then decide what to keep. The photo can stay with the medication, private to the workspace.",
-      },
-      {
-        title: "Supplies",
-        body: "Supplies are the things you really cannot run out of. Mark what is low, what was reordered, and what came back. A reorder link can point at the place you already buy it.",
-      },
-      {
-        title: "A photo of a package",
-        body: "A package photo can suggest a supply you already track. You confirm it before anything is added. The app does not place the order for you.",
-      },
-    ],
-  },
-  {
-    id: "calls",
-    eyebrow: "The phone and the paper",
-    title: "After the call, the details have somewhere to go.",
-    intro:
-      "Insurance, the pharmacy, the agency, the equipment company. The useful part is rarely the conversation. It is the name, the reference number, and the date you have to call again.",
-    items: [
-      {
-        title: "Calls",
-        body: "Write down the boring details while they are still fresh: who you spoke with, the number, and the reference number they made you repeat twice.",
-      },
-      {
-        title: "Documents",
-        body: "Upload the paperwork you will otherwise spend twenty minutes looking for. Discharge papers, cards, forms, the letter you know you will need again. Storage room depends on the plan.",
-      },
-      {
-        title: "Appointment preparation",
-        body: "Ask for a preparation summary before the visit. It is built from the records already in the Command Center: what is coming up, what changed, and what you may want to ask.",
-      },
-      {
-        title: "Summaries",
-        body: "You can also ask what changed since you last looked. A summary stays tied to saved records. It does not send a message, call the office, or create a reminder on its own.",
-      },
-    ],
-  },
-  {
-    id: "people",
-    eyebrow: "The people helping",
-    title: "So you are not the only one holding it.",
-    intro:
-      "Care does not get lighter because more people are in a group text. It gets lighter when the next person can see the list, the task, and what they are walking into.",
-    items: [
-      {
-        title: "Care team",
-        body: "The care team is who you call, and what you call them for. Keep the role, the phone, the email, and the reason that person is on the list.",
+        body: "Doctor visits, therapy, home health, rides, deliveries, and your own time. An appointment is who it is with, when it is, and why you are going.",
       },
       {
         title: "Tasks",
-        body: "Tasks turn “let me know how I can help” into something a person owns. The next thing has a name on it, instead of floating in the family thread.",
+        body: "“Let me know how I can help” becomes a task with a name on it. Ownership is how someone else actually takes a piece.",
+      },
+      {
+        title: "Follow-ups",
+        body: "The date you said you would check back. A call, a waiting item, or a delivery can leave that date here.",
+      },
+      {
+        title: "Reminders",
+        body: "In the app, and by email when you want them. How far the reminders go depends on the plan.",
+      },
+    ],
+  },
+  {
+    id: "medications",
+    band: "band",
+    eyebrow: "Keep medications organized",
+    title: "The list, the label, and what you wrote down.",
+    intro:
+      "UU Organized stores the medication information you enter. It does not diagnose, change a dose, or decide what someone should take. You review every field before it is saved.",
+    items: [
+      {
+        title: "The medication list",
+        body: "Name, instructions, times, and refill notes. This is the list for the moment someone asks whether it was already given.",
+      },
+      {
+        title: "What you record",
+        body: "Schedules, the events you log, and the changes you write down stay with the medication. The history is what you entered, not a guess.",
+      },
+      {
+        title: "A photo of the label",
+        body: "Photograph the label or upload a picture. The reading is a draft. You check every field, then decide what to keep.",
+      },
+    ],
+  },
+  {
+    id: "waiting",
+    band: "",
+    eyebrow: "Track the stuff nobody remembers",
+    title: "Waiting on somebody else is still something you have to manage.",
+    intro:
+      "The useful part of the call is rarely the conversation. It is the name, the reference number, and the date you have to try again.",
+    items: [
+      {
+        title: "Waiting On",
+        body: "The callback, the authorization, the delivery. You can see what is stuck in somebody else’s hands without scrolling a text thread.",
+      },
+      {
+        title: "Calls",
+        body: "Who you spoke with, the number, and the reference number they made you repeat twice.",
+      },
+      {
+        title: "Follow-up dates",
+        body: "A waiting item can leave a date and a person. The next check is not only a promise you made out loud.",
+      },
+      {
+        title: "Equipment",
+        body: "Wheelchairs, beds, and the things on order. Status stays with the item instead of in a voicemail.",
+      },
+      {
+        title: "Services",
+        body: "Home health, rides, aides, and programs. Who is coming, and what they are there for.",
+      },
+      {
+        title: "Applications",
+        body: "What you sent, what is missing, and who has the file.",
+      },
+    ],
+  },
+  {
+    id: "supplies",
+    band: "band-sage",
+    eyebrow: "The shit you cannot run out of",
+    title: "Don't find out at 9 p.m. that you are down to the last one.",
+    intro:
+      "Supplies are the household things you really cannot run out of. The app tracks them. It does not place the order.",
+    items: [
+      {
+        title: "What you keep",
+        body: "Start from a catalog or add your own. Brand, size, and how it comes packaged can sit with the item.",
+      },
+      {
+        title: "How much is left",
+        body: "Current quantity, the point where it counts as low, and how much you reorder.",
+      },
+      {
+        title: "Where you buy it",
+        body: "A photo, the retailer you prefer, and the link for the place you already buy it.",
+      },
+      {
+        title: "When it is low",
+        body: "A low-stock note, and a place to mark that it was reordered or that it came back.",
+      },
+    ],
+  },
+  {
+    id: "history",
+    band: "",
+    eyebrow: "Keep a real care history",
+    title: "If it only lives in your memory, it is already half gone.",
+    intro:
+      "Notes, observations, and paperwork stay with the person. A month from now you should not have to reconstruct what changed.",
+    items: [
+      {
+        title: "Notes",
+        body: "What you need to remember later. Search and filters are there when the pile gets long.",
+      },
+      {
+        title: "Observations",
+        body: "I don't know if this matters, but… If something feels different, write it down before you talk yourself out of it.",
+      },
+      {
+        title: "Know Their Normal",
+        body: "What an ordinary day looks like for them, so a change has something to stand next to.",
+      },
+      {
+        title: "Documents",
+        body: "Discharge papers, cards, forms, the letter you will need again. Storage room depends on the plan.",
+      },
+      {
+        title: "Monthly Care Review",
+        body: "A look back at the month from the records already saved, so you are not starting from a blank page.",
+      },
+      {
+        title: "Exports",
+        body: "Command Center and Family can export. Free keeps the records in the app.",
+      },
+    ],
+  },
+  {
+    id: "together",
+    band: "band",
+    eyebrow: "Share the mental load",
+    title: "So somebody else can actually help.",
+    intro:
+      "Helping means a name on the next thing. It does not mean another “let me know if you need anything.”",
+    items: [
+      {
+        title: "Care team",
+        body: "Who you call, and what you call them for. Role, phone, email, and the reason they are on the list.",
+      },
+      {
+        title: "The people in the workspace",
+        body: "Members have roles. Access can be limited to the care recipients a person is actually helping.",
       },
       {
         title: "Handoffs",
-        body: "A handoff is what the next person actually needs when they take a turn: what changed, what is due, and what they should not have to discover at 9 p.m.",
+        body: "What the next person needs when they take a turn: what changed, what is due, and what they should not discover at 9 p.m.",
       },
       {
         title: "Messages",
-        body: "Messages are a private place to tell the people helping, without starting another group text. Messaging and family collaboration are part of the Family plan.",
+        body: "A private place for everyone, for one care team, for a few people, or for one person. Important messages can be marked. Messaging is part of the Family plan.",
+      },
+    ],
+  },
+  {
+    id: "capture",
+    band: "band-sage",
+    eyebrow: "AI that organizes the chaos",
+    title: "Tell me what's going on. I'll organize it.",
+    intro:
+      "Quick Capture is for the moment you cannot stop and file the thing correctly. Nothing important is saved until you confirm it. This is organization help, not medical advice.",
+    items: [
+      {
+        title: "Type it",
+        body: "Write what is going on in plain language. The Command Center sorts it toward the list it belongs on. You still confirm the result.",
+      },
+      {
+        title: "Say it",
+        body: "Use the microphone when your hands are full. The recording becomes a transcript you can edit before it is organized.",
+      },
+      {
+        title: "Photograph it",
+        body: "A medication label is read as a draft. A package photo can suggest a supply. You review it before anything is kept.",
+      },
+      {
+        title: "Ask Command Center",
+        body: "Questions stay tied to the records you can already see. Ask what needs attention, what changed, or for help preparing a visit, a handoff, or the monthly review.",
+      },
+    ],
+  },
+  {
+    id: "changes",
+    band: "",
+    eyebrow: "Know what's changed",
+    title: "Catch up without reading every record.",
+    intro:
+      "The timeline and the summaries are built from what is already saved. They do not invent a change that nobody wrote down.",
+    items: [
+      {
+        title: "Universal Timeline",
+        body: "Notes, observations, medication changes, calls, waiting items, tasks, and follow-ups in one place. Filter it when you only need one kind.",
+      },
+      {
+        title: "Since you last looked",
+        body: "A summary of what changed, tied back to the records. It does not send a message or create a reminder on its own.",
+      },
+      {
+        title: "Before the visit",
+        body: "Appointment preparation pulls what is coming up, what changed, and what you may want to ask. You decide what to take with you.",
       },
     ],
   },
@@ -130,18 +254,14 @@ export default function CommandCenterPage() {
     name: "Caregiver Command Center",
     url: `${site.url}/command-center`,
     description,
-    isPartOf: {
-      "@type": "WebSite",
-      name: site.name,
-      url: site.url,
-    },
+    isPartOf: { "@type": "WebSite", name: site.name, url: site.url },
   };
 
   return (
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
-      <section className="section hero">
-        <div className="wrap narrow-prose">
+      <section className="section">
+        <div className="wrap narrow">
           <p className="eyebrow">Caregiver Command Center</p>
           <h1>One place for the care you are already holding.</h1>
           <Brush />
@@ -151,14 +271,14 @@ export default function CommandCenterPage() {
           </p>
           <p>
             UU Organized helps you keep track of it all, with AI helping organize the chaos. You decide
-            what goes in. You review it before it is saved. The book teaches the system. This is where
-            you run it.
+            what goes in. You review it before it is saved.
           </p>
+          <p className="book-line">The book teaches the system. The app helps you run it.</p>
           <div className="actions">
-            <a className="button" href={signupHref("free")}>
+            <a className="button" href={signupHref("free")} data-cta="start-free">
               Start Free
             </a>
-            <Link className="button button-ghost" href="/pricing">
+            <Link className="button button-ghost" href="/pricing" data-cta="see-pricing">
               See pricing
             </Link>
           </div>
@@ -166,7 +286,7 @@ export default function CommandCenterPage() {
       </section>
 
       {chapters.map((chapter) => (
-        <section className="section" key={chapter.id} aria-labelledby={`${chapter.id}-heading`}>
+        <section key={chapter.id} id={chapter.id} className={chapter.band ? `section ${chapter.band}` : "section"} aria-labelledby={`${chapter.id}-heading`}>
           <div className="wrap">
             <div className="section-head">
               <p className="eyebrow">{chapter.eyebrow}</p>
@@ -185,51 +305,7 @@ export default function CommandCenterPage() {
         </section>
       ))}
 
-      <section className="section band-sage" aria-labelledby="capture-heading">
-        <div className="wrap">
-          <div className="section-head">
-            <p className="eyebrow">When your hands are full</p>
-            <h2 id="capture-heading">Say it. Show it. Ask it later.</h2>
-            <p className="lede">
-              Quick Capture is for the moment you cannot stop and file the thing correctly. Nothing is
-              saved until you confirm it.
-            </p>
-          </div>
-          <div className="detail-grid">
-            <article>
-              <h3>Type it</h3>
-              <p>
-                Write what is going on in plain language. The Command Center sorts it toward the list it
-                belongs on. You still confirm the result.
-              </p>
-            </article>
-            <article>
-              <h3>Say it</h3>
-              <p>
-                Use the microphone when your hands are on a bottle, a steering wheel, or a discharge
-                packet. The recording becomes a transcript you can edit before it is organized.
-              </p>
-            </article>
-            <article>
-              <h3>Photograph it</h3>
-              <p>
-                A photo can start a supply note. A medication label is read on its own screen, and you
-                review every field. The photo does not decide a dose.
-              </p>
-            </article>
-            <article>
-              <h3>Ask Command Center</h3>
-              <p>
-                Questions stay tied to the records you can already see. Ask what needs attention, what
-                changed, or to prepare you for the next appointment. How much AI help you get depends on
-                the plan.
-              </p>
-            </article>
-          </div>
-        </div>
-      </section>
-
-      <section className="section" aria-labelledby="plans-heading">
+      <section className="section band" id="plans" aria-labelledby="plans-heading">
         <div className="wrap">
           <div className="section-head">
             <p className="eyebrow">How the plans fit</p>
@@ -252,42 +328,41 @@ export default function CommandCenterPage() {
               <p>3 care recipients and 10 members, with messaging, family collaboration, and expanded AI for the people sharing the care.</p>
             </article>
           </div>
-          <div className="actions actions-spaced">
-            <Link className="button" href="/pricing">
-              See pricing
+          <div className="actions">
+            <Link className="button" href="/pricing" data-cta="see-pricing">
+              Compare plans
             </Link>
-            <a className="button button-ghost" href={signupHref("free")}>
+            <a className="button button-ghost" href={signupHref("free")} data-cta="start-free">
               Start Free
             </a>
           </div>
         </div>
       </section>
 
-      <section className="section band" aria-labelledby="book-system-heading">
-        <div className="wrap story">
+      <section className="section" aria-labelledby="book-heading">
+        <div className="wrap book-feature">
           <figure className="hero-cover">
-            <Picture
-              src="/images/book-cover.jpg"
-              alt="Book cover of Who the Hell Put Me in Charge?! by Stormi J."
-              width={1000}
-              height={1250}
-              sizes="(max-width: 900px) 80vw, 380px"
-            />
+          <Picture
+            src="/images/book-cover.jpg"
+            alt="Who the Hell Put Me in Charge?! book cover"
+            width={800}
+            height={1000}
+          />
           </figure>
-          <div className="prose">
+          <div>
             <p className="eyebrow">The book and the app</p>
-            <h2 id="book-system-heading">The book teaches the system. The app helps you run it.</h2>
+            <h2 id="book-heading">The book teaches the system. The app helps you run it.</h2>
             <p>
               <em>Who the Hell Put Me in Charge?!</em> stays a book you can buy on its own. The Caregiver
-              Command Center is the digital tool inspired by that caregiving system: the medications, the
-              appointments, the paperwork, and the rest of what nobody warns you about.
+              Command Center is the digital tool inspired by that caregiving system. You do not need the
+              app to use the book, and you do not need the book to start the app.
             </p>
             <div className="actions">
-              <Link className="button" href="/shop#book">
+              <Link className="button button-ghost" href="/shop#book">
                 Shop the book
               </Link>
-              <a className="button button-ghost" href={signupHref("free")}>
-                Start Free
+              <a className="button" href={signupHref("free")} data-cta="start-free">
+                Try the Caregiver Command Center Free
               </a>
             </div>
           </div>

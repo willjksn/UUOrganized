@@ -5,16 +5,18 @@ export function ActionLink({
   href,
   className,
   children,
+  cta,
 }: {
   href: string;
   className?: string;
   children: React.ReactNode;
+  cta?: string;
 }) {
   if (!href) return null;
   if (href.startsWith("http")) {
     if (isAppHref(href)) {
       return (
-        <a className={className} href={href}>
+        <a className={className} href={href} data-cta={cta}>
           {children}
         </a>
       );
@@ -23,6 +25,7 @@ export function ActionLink({
       <a
         className={className}
         href={href}
+        data-cta={cta}
         target="_blank"
         rel={href.includes("amazon.com") ? "sponsored noreferrer" : "noreferrer"}
       >
@@ -32,13 +35,13 @@ export function ActionLink({
   }
   if (href.startsWith("#")) {
     return (
-      <a className={className} href={href}>
+      <a className={className} href={href} data-cta={cta}>
         {children}
       </a>
     );
   }
   return (
-    <Link className={className} href={href}>
+    <Link className={className} href={href} data-cta={cta}>
       {children}
     </Link>
   );

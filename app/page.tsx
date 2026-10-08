@@ -69,11 +69,11 @@ export default async function HomePage() {
               </p>
             ))}
             <div className="actions">
-              <ActionLink className="button" href={copy.homePrimaryHref}>
+              <ActionLink className="button" href={copy.homePrimaryHref} cta="start-free">
                 {copy.homePrimaryCta}
               </ActionLink>
               {copy.homeSecondaryCta ? (
-                <ActionLink className="button button-ghost" href={copy.homeSecondaryHref}>
+                <ActionLink className="button button-ghost" href={copy.homeSecondaryHref} cta="explore-command-center">
                   {copy.homeSecondaryCta}
                 </ActionLink>
               ) : null}
@@ -141,12 +141,12 @@ export default async function HomePage() {
             </article>
           </div>
           <div className="actions">
-            <ActionLink className="button" href="/command-center">
-              Explore the Command Center
-            </ActionLink>
-            <a className="button button-ghost" href={signupHref("free")}>
+            <a className="button" href={signupHref("free")} data-cta="start-free">
               Start Free
             </a>
+            <ActionLink className="button button-ghost" href="/command-center" cta="explore-command-center">
+              Explore the Command Center
+            </ActionLink>
           </div>
         </div>
       </section>

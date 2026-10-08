@@ -35,10 +35,10 @@ export async function Footer() {
               <Link href="/privacy">Privacy</Link>
             </li>
             <li>
-              <a href={loginHref}>Log In</a>
+              <a href={loginHref} data-cta="login">Log In</a>
             </li>
             <li>
-              <a href={signupHref("free")}>Start Free</a>
+              <a href={signupHref("free")} data-cta="start-free">Start Free</a>
             </li>
           </ul>
         </nav>

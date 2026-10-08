@@ -1,14 +1,14 @@
 "use client";
 
 import { useId, useState } from "react";
-import type { BillingInterval, PlanComparisonRow, PlanOffer } from "@/lib/plans";
+import type { BillingInterval, PlanComparisonGroup, PlanOffer } from "@/lib/plans";
 
 export function PricingBoard({
   plans,
-  rows,
+  groups,
 }: {
   plans: PlanOffer[];
-  rows: PlanComparisonRow[];
+  groups: PlanComparisonGroup[];
 }) {
   const [billing, setBilling] = useState<BillingInterval>("monthly");
   const labelId = useId();
@@ -72,7 +72,7 @@ export function PricingBoard({
                   <li key={point}>{point}</li>
                 ))}
               </ul>
-              <a className="button" href={href}>
+              <a className="button" href={href} data-cta={plan.ctaId}>
                 {plan.cta}
               </a>
             </article>
@@ -80,37 +80,48 @@ export function PricingBoard({
         })}
       </div>
 
-      <div className="plan-table-wrap">
-        <table className="plan-table">
-          <caption>
-            What each plan includes
-            <span>The book and printables stay in the shop. These are the allowances inside the app.</span>
-          </caption>
-          <thead>
-            <tr>
-              <th scope="col">
-                <span className="sr-only">Allowance</span>
-              </th>
-              {plans.map((plan) => (
-                <th key={plan.key} scope="col" className={plan.featured ? "col-main" : undefined}>
-                  {plan.name}
-                </th>
-              ))}
-            </tr>
-          </thead>
-          <tbody>
-            {rows.map((row) => (
-              <tr key={row.label}>
-                <th scope="row">{row.label}</th>
-                {row.values.map((value, index) => (
-                  <td key={plans[index].key} className={plans[index].featured ? "col-main" : undefined}>
-                    <span className={value === "Not included" ? "is-off" : undefined}>{value}</span>
-                  </td>
+      <div className="compare">
+        <div className="compare-intro">
+          <h2>What each plan includes</h2>
+          <p>
+            The book and printables stay in the shop. Inside the app, the care tools are on every plan.
+            Plans differ by how many people they hold, how much AI and document storage you get, exports,
+            reminders, and whether the family can message each other.
+          </p>
+        </div>
+        {groups.map((group) => (
+          <section key={group.title} className="compare-group" aria-label={group.title}>
+            <h3>{group.title}</h3>
+            <div className="compare-names" aria-hidden="true">
+              <span />
+              <div className="compare-name-row">
+                {plans.map((plan) => (
+                  <span key={plan.key} className={plan.featured ? "is-featured" : undefined}>
+                    {plan.name}
+                  </span>
                 ))}
-              </tr>
+              </div>
+            </div>
+            {group.rows.map((row) => (
+              <div key={row.label} className="compare-feature">
+                <h4>{row.label}</h4>
+                <ul className="compare-values">
+                  {row.values.map((value, index) => (
+                    <li
+                      key={plans[index].key}
+                      className={plans[index].featured ? "compare-value is-featured" : "compare-value"}
+                    >
+                      <span className="compare-plan">{plans[index].name}</span>
+                      <span className={value.tone === "off" ? "is-off" : value.tone === "limited" ? "is-limited" : "is-in"}>
+                        {value.text}
+                      </span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
             ))}
-          </tbody>
-        </table>
+          </section>
+        ))}
       </div>
     </div>
   );

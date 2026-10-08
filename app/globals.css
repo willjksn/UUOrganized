@@ -2138,76 +2138,83 @@ section.hero {
   margin-top: auto;
 }
 
-.plan-table-wrap {
-  margin-top: 2.75rem;
-  overflow-x: auto;
+.compare {
+  margin-top: 3rem;
+}
+
+.compare-intro h2 {
+  margin-bottom: 0.55rem;
+}
+
+.compare-intro p {
+  max-width: 40rem;
+  margin-top: 0;
+}
+
+.compare-group {
+  margin-top: 1.25rem;
   background: var(--paper);
   border: 1px solid var(--line);
+  padding: 1.15rem 1.1rem 0.35rem;
 }
 
-.plan-table {
-  width: 100%;
-  min-width: 40rem;
-  border-collapse: collapse;
+.compare-group h3 {
+  margin: 0 0 0.35rem;
+  font-size: clamp(1.45rem, 2vw, 1.8rem);
 }
 
-.plan-table caption {
-  caption-side: top;
-  padding: 1.2rem 1.15rem 0.85rem;
-  text-align: left;
-  font-family: var(--font-display), Georgia, serif;
-  font-size: clamp(1.7rem, 3vw, 2.35rem);
-  font-weight: 560;
-  letter-spacing: -0.03em;
-  line-height: 1.1;
+.compare-names {
+  display: none;
 }
 
-.plan-table caption span {
-  display: block;
-  margin-top: 0.45rem;
-  max-width: 36rem;
-  font-family: var(--font-body), "Segoe UI", sans-serif;
-  font-size: 0.98rem;
-  font-weight: 400;
-  letter-spacing: 0;
-  line-height: 1.45;
-  color: var(--muted);
-}
-
-.plan-table th,
-.plan-table td {
-  padding: 0.9rem 0.8rem;
+.compare-feature {
+  display: grid;
+  gap: 0.55rem;
+  padding: 0.9rem 0;
   border-top: 1px solid var(--line);
-  vertical-align: middle;
 }
 
-.plan-table thead th {
-  border-top: 0;
-  font-family: var(--font-display), Georgia, serif;
-  font-size: 1.35rem;
-  font-weight: 560;
-  letter-spacing: -0.03em;
-  text-align: center;
-}
-
-.plan-table tbody th {
-  width: 26%;
+.compare-feature h4 {
+  margin: 0;
+  font-family: var(--font-body), "Segoe UI", sans-serif;
+  font-size: 1rem;
   font-weight: 650;
-  text-align: left;
+  letter-spacing: 0;
+  line-height: 1.35;
 }
 
-.plan-table td {
-  text-align: center;
+.compare-values {
+  display: grid;
+  gap: 0.35rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.compare-value {
+  display: flex;
+  justify-content: space-between;
+  gap: 0.8rem;
+  align-items: baseline;
+  min-height: 44px;
+  padding: 0.35rem 0;
   font-weight: 650;
 }
 
-.plan-table .col-main {
-  background: var(--blush);
-}
-
-.plan-table .is-off {
+.compare-plan {
   color: var(--muted);
-  font-weight: 500;
+  font-weight: 600;
+}
+
+.compare-value .is-off,
+.compare-value .is-limited {
+  color: var(--muted);
+  font-weight: 600;
+  text-align: right;
+}
+
+.compare-value .is-in {
+  text-align: right;
 }
 
 .pricing-foot {
@@ -2220,6 +2227,75 @@ section.hero {
   .detail-grid,
   .command-preview {
     grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .compare-names {
+    display: grid;
+    grid-template-columns: minmax(11rem, 1.15fr) minmax(0, 2.5fr);
+    gap: 1rem;
+    margin-top: 0.85rem;
+    padding-bottom: 0.35rem;
+  }
+
+  .compare-name-row,
+  .compare-values {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 0.45rem;
+  }
+
+  .compare-name-row span {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 2.4rem;
+    padding: 0.35rem 0.65rem;
+    font-family: var(--font-display), Georgia, serif;
+    font-size: 1.2rem;
+    letter-spacing: -0.03em;
+    text-align: center;
+  }
+
+  .compare-name-row .is-featured,
+  .compare-value.is-featured {
+    background: var(--blush);
+  }
+
+  .compare-feature {
+    grid-template-columns: minmax(11rem, 1.15fr) minmax(0, 2.5fr);
+    align-items: stretch;
+    gap: 1rem;
+  }
+
+  .compare-feature h4 {
+    padding-top: 0.7rem;
+  }
+
+  .compare-value {
+    position: relative;
+    flex-direction: column;
+    justify-content: center;
+    min-height: 3.2rem;
+    padding: 0.55rem 0.65rem;
+    text-align: center;
+  }
+
+  .compare-plan {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+  }
+
+  .compare-value .is-in,
+  .compare-value .is-off,
+  .compare-value .is-limited {
+    text-align: center;
   }
 }
 

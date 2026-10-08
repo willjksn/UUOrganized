@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { ActionLink } from "@/components/ActionLink";
 import { BookToApp } from "@/components/BookToApp";
+import { Brush } from "@/components/Brush";
 import { Paragraphs } from "@/components/Paragraphs";
 import { ProductAction } from "@/components/ProductAction";
 import { ProductCard } from "@/components/ProductCard";
@@ -33,6 +34,7 @@ export default async function ShopPage({
         <div className="section-head">
           <p className="eyebrow">{copy.shopEyebrow}</p>
           <h1>{copy.shopHeading}</h1>
+          <Brush />
           <p className="lede">{copy.shopLede}</p>
         </div>
 

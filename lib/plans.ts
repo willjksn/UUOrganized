@@ -19,15 +19,25 @@ export type PlanOffer = {
   monthlyHref: string;
   annualHref: string;
   cta: string;
+  ctaId: string;
   featured?: boolean;
   points: string[];
   annualNote?: string;
 };
 
-export type PlanComparisonRow = {
-  label: string;
-  values: [string, string, string];
+export type PlanMark = {
+  text: string;
+  tone: "in" | "limited" | "off";
 };
+
+export type PlanComparisonGroup = {
+  title: string;
+  rows: { label: string; values: [PlanMark, PlanMark, PlanMark] }[];
+};
+
+const included: PlanMark = { text: "Included", tone: "in" };
+const notIncluded: PlanMark = { text: "Not included", tone: "off" };
+const onEveryPlan: [PlanMark, PlanMark, PlanMark] = [included, included, included];
 
 const freeSignup = signupHref("free");
 
@@ -43,6 +53,7 @@ export const planOffers: PlanOffer[] = [
     monthlyHref: freeSignup,
     annualHref: freeSignup,
     cta: "Start Free",
+    ctaId: "start-free",
     points: [
       "1 care recipient",
       "2 members",
@@ -62,6 +73,7 @@ export const planOffers: PlanOffer[] = [
     monthlyHref: signupHref("command-center", "monthly"),
     annualHref: signupHref("command-center", "annual"),
     cta: "Choose Command Center",
+    ctaId: "choose-command-center",
     featured: true,
     annualNote: "The yearly price is about ten months of the monthly price.",
     points: [
@@ -83,6 +95,7 @@ export const planOffers: PlanOffer[] = [
     monthlyHref: signupHref("family", "monthly"),
     annualHref: signupHref("family", "annual"),
     cta: "Choose Family",
+    ctaId: "choose-family",
     annualNote: "The yearly price is about ten months of the monthly price.",
     points: [
       "3 care recipients",
@@ -95,23 +108,131 @@ export const planOffers: PlanOffer[] = [
   },
 ];
 
-export const planComparison: PlanComparisonRow[] = [
-  { label: "Care recipients", values: ["1", "1", "3"] },
-  { label: "Members", values: ["2", "4", "10"] },
+export const planComparison: PlanComparisonGroup[] = [
   {
-    label: "Messaging and family collaboration",
-    values: ["Not included", "Not included", "Included"],
+    title: "Care organization",
+    rows: [
+      { label: "Today / My Day", values: onEveryPlan },
+      { label: "Calendar and appointments", values: onEveryPlan },
+      { label: "Tasks and assignments", values: onEveryPlan },
+      { label: "Follow-ups", values: onEveryPlan },
+      { label: "Needs Attention", values: onEveryPlan },
+      { label: "Waiting On", values: onEveryPlan },
+      { label: "Calls and reference numbers", values: onEveryPlan },
+      { label: "Equipment, services, and applications", values: onEveryPlan },
+      { label: "Universal Timeline", values: onEveryPlan },
+    ],
   },
   {
-    label: "AI assistance",
-    values: ["Limited AI assistance", "Generous AI assistance", "Expanded AI assistance"],
+    title: "Medications",
+    rows: [
+      { label: "Medication list and schedules", values: onEveryPlan },
+      { label: "History and change tracking", values: onEveryPlan },
+      { label: "Label photo and review before saving", values: onEveryPlan },
+    ],
   },
-  { label: "AI uses a month", values: ["10", "100", "300"] },
-  { label: "Documents", values: ["Included", "Included", "Included"] },
-  { label: "Document storage", values: ["250 MB", "2 GB", "10 GB"] },
-  { label: "Exports", values: ["Not included", "Included", "Included"] },
   {
-    label: "Reminders",
-    values: ["Basic reminders", "Advanced reminders", "Advanced reminders"],
+    title: "Supplies",
+    rows: [
+      { label: "Supply tracking and catalog", values: onEveryPlan },
+      { label: "Low-stock thresholds and alerts", values: onEveryPlan },
+      { label: "Photos and reorder links", values: onEveryPlan },
+    ],
+  },
+  {
+    title: "History and documents",
+    rows: [
+      { label: "Notes and observations", values: onEveryPlan },
+      { label: "Know Their Normal", values: onEveryPlan },
+      { label: "Documents and attachments", values: onEveryPlan },
+      { label: "Search and filters", values: onEveryPlan },
+      { label: "Monthly Care Review", values: onEveryPlan },
+      {
+        label: "Exports",
+        values: [notIncluded, included, included],
+      },
+      {
+        label: "Document storage",
+        values: [
+          { text: "250 MB", tone: "limited" },
+          { text: "2 GB", tone: "in" },
+          { text: "10 GB", tone: "in" },
+        ],
+      },
+    ],
+  },
+  {
+    title: "Collaboration",
+    rows: [
+      {
+        label: "Workspace members",
+        values: [
+          { text: "Up to 2 members", tone: "limited" },
+          { text: "Up to 4 members", tone: "in" },
+          { text: "Up to 10 members", tone: "in" },
+        ],
+      },
+      { label: "Roles and recipient access", values: onEveryPlan },
+      { label: "Task ownership and handoffs", values: onEveryPlan },
+      {
+        label: "Family sharing and messaging",
+        values: [notIncluded, notIncluded, included],
+      },
+    ],
+  },
+  {
+    title: "AI",
+    rows: [
+      { label: "Typed Quick Capture", values: onEveryPlan },
+      { label: "Voice Quick Capture", values: onEveryPlan },
+      { label: "Medication photo extraction", values: onEveryPlan },
+      { label: "Ask Command Center", values: onEveryPlan },
+      { label: "Appointment prep and handoff help", values: onEveryPlan },
+      { label: "Monthly review and change summaries", values: onEveryPlan },
+      {
+        label: "Monthly AI allowance",
+        values: [
+          { text: "Limited — 10 a month", tone: "limited" },
+          { text: "Generous — 100 a month", tone: "in" },
+          { text: "Expanded — 300 a month", tone: "in" },
+        ],
+      },
+    ],
+  },
+  {
+    title: "Notifications and reminders",
+    rows: [
+      { label: "In-app notifications", values: onEveryPlan },
+      { label: "Email notifications", values: onEveryPlan },
+      {
+        label: "Reminders",
+        values: [
+          { text: "Basic reminders", tone: "limited" },
+          { text: "Advanced reminders", tone: "in" },
+          { text: "Advanced reminders", tone: "in" },
+        ],
+      },
+    ],
+  },
+  {
+    title: "Capacity",
+    rows: [
+      {
+        label: "Care recipients",
+        values: [
+          { text: "1 care recipient", tone: "limited" },
+          { text: "1 care recipient", tone: "limited" },
+          { text: "3 care recipients", tone: "in" },
+        ],
+      },
+      {
+        label: "Members",
+        values: [
+          { text: "2 members", tone: "limited" },
+          { text: "4 members", tone: "in" },
+          { text: "10 members", tone: "in" },
+        ],
+      },
+    ],
   },
 ];
