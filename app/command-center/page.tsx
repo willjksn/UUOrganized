@@ -180,12 +180,12 @@ const chapters = [
       "Helping means a name on the next thing. It does not mean another “let me know if you need anything.”",
     items: [
       {
-        title: "Care team",
-        body: "Who you call, and what you call them for. Role, phone, email, and the reason they are on the list.",
+        title: "Care Contacts",
+        body: "Doctors, therapists, agencies, pharmacies, and the other people you call. Role, phone, email, and why they are on the list. They do not sign in.",
       },
       {
-        title: "The people in the workspace",
-        body: "People helping have roles. Access can be limited to the people someone is actually helping.",
+        title: "People Helping",
+        body: "Family, caregivers, and helpers who can sign in. They join the workspace you already have. A caregiver spot is not a second subscription, and access can be limited to the people they are actually helping.",
       },
       {
         title: "Handoffs",
@@ -193,7 +193,7 @@ const chapters = [
       },
       {
         title: "Messages",
-        body: "A private place for everyone, for one care team, for a few people, or for one person. Important messages can be marked. Messaging is part of Caregiver Family.",
+        body: "A private place for the people helping. Everyone, a few people, or one person. Important messages can be marked. Messaging is part of Caregiver Family.",
       },
     ],
   },
@@ -203,11 +203,11 @@ const chapters = [
     eyebrow: "Who's got this?",
     title: "Care doesn't stop just because the primary caregiver is busy, working, or out of town.",
     intro:
-      "When a visit, appointment, ride, or task needs someone, the care team can see what still needs coverage and take ownership. Once someone takes it, the rest of the team can see who has it covered.",
+      "When a visit, appointment, ride, or task needs someone, the people helping can see what still needs coverage and take ownership. Once someone takes it, the rest of them can see who has it covered.",
     items: [
       {
         title: "I can be there.",
-        body: "A CNA is coming Tuesday. Someone on the care team can choose to be there.",
+        body: "A CNA is coming Tuesday. Someone helping can choose to be there.",
       },
       {
         title: "I can drive.",
@@ -215,7 +215,7 @@ const chapters = [
       },
       {
         title: "I've got this.",
-        body: "A medication pickup is still unassigned. A team member can claim that task.",
+        body: "A medication pickup is still unassigned. Someone helping can claim that task.",
       },
       {
         title: "Still open",

@@ -44,9 +44,10 @@ export default function PricingPage() {
               the care. Caregiver Family is for the people managing it together.
             </p>
             <p>
-              Choosing a plan opens the app so you can sign up. Paid plans continue to checkout there,
-              after you have an account. This page does not charge a card. The book and printables stay
-              in the <Link href="/shop">shop</Link>.
+              A caregiver spot is someone who can sign in and help. They join your workspace. They do not
+              buy their own plan. Choosing a plan opens the app so you can sign up. Paid plans continue
+              to checkout there, after you have an account. This page does not charge a card. The book
+              and printables stay in the <Link href="/shop">shop</Link>.
             </p>
           </div>
           <PricingBoard plans={planOffers} groups={planComparison} />

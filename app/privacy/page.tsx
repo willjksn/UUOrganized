@@ -1,10 +1,11 @@
 import type { Metadata } from "next";
 import { Brush } from "@/components/Brush";
+import { legalLinks } from "@/lib/app-links";
 import { site } from "@/lib/site";
 
 export const metadata: Metadata = {
   title: "Privacy",
-  description: "What Unhinged. Unfiltered. Organized. does with your email and messages.",
+  description: "What this website does with shop orders, free-file emails, and contact messages.",
 };
 
 export default function PrivacyPage() {
@@ -17,7 +18,17 @@ export default function PrivacyPage() {
           <Brush />
           <p>
             I’m Stormi J. This site is {site.name} at {site.url.replace("https://", "")}. This is a
-            plain-language note about what I collect here.
+            plain-language note about the shop, free files, and messages on this website.
+          </p>
+          <p>
+            The UU Organized app keeps its own{" "}
+            {legalLinks.map((link, index) => (
+              <span key={link.href}>
+                {index === 0 ? "" : index === legalLinks.length - 1 ? ", and " : ", "}
+                <a href={link.href}>{link.label}</a>
+              </span>
+            ))}
+            .
           </p>
         </header>
         <div className="privacy-grid">

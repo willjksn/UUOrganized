@@ -84,7 +84,7 @@ export function PricingBoard({
         <div className="compare-intro">
           <h2>What each plan includes</h2>
           <p>
-            The book and printables stay in the shop. Care-team coverage is on every plan. Caregiver Family
+            The book and printables stay in the shop. Who's Got This? is on every plan. Caregiver Family
             is the larger team, and the one with messaging. Plans also differ by AI, document storage,
             exports, and reminders.
           </p>

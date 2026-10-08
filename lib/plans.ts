@@ -165,7 +165,7 @@ export const planComparison: PlanComparisonGroup[] = [
     title: "Collaboration",
     rows: [
       {
-        label: "Care-team coverage / “Who’s got this?”",
+        label: "Who’s Got This?",
         values: onEveryPlan,
       },
       {

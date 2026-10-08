@@ -3,7 +3,7 @@ export const site = {
   shortName: "UUO",
   author: "Stormi J.",
   url: process.env.SITE_URL || "https://uuorganized.com",
-  email: process.env.CONTACT_EMAIL || "hello@uuorganized.com",
+  email: process.env.CONTACT_EMAIL || "contact@uuorganized.com",
   description:
     "Practical systems for the shit nobody tells you about. The book, printables, and UU Organized app by Stormi J.",
   amazon:

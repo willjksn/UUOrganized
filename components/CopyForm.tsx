@@ -142,7 +142,7 @@ export function CopyForm({ copy }: { copy: SiteCopy }) {
         <summary>Contact</summary>
         <Field label="Small label" name="contactEyebrow" value={copy.contactEyebrow} max={80} />
         <Field label="Heading" name="contactHeading" value={copy.contactHeading} max={160} />
-        <Field label="Sentence" name="contactBody" value={copy.contactBody} max={800} rows={4} hint="The hello@ address stays under this." />
+        <Field label="Sentence" name="contactBody" value={copy.contactBody} max={800} rows={4} hint="The contact@ address stays under this." />
       </details>
 
       <details className="copy-section">

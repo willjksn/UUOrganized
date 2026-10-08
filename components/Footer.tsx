@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { loginHref, signupHref } from "@/lib/app-links";
+import { legalLinks, loginHref, signupHref } from "@/lib/app-links";
 import { getCatalog, publicSocials } from "@/lib/catalog";
 import { publicNav } from "@/lib/nav";
 import { site } from "@/lib/site";
@@ -31,9 +31,11 @@ export async function Footer() {
                 <Link href={page.href}>{page.label}</Link>
               </li>
             ))}
-            <li>
-              <Link href="/privacy">Privacy</Link>
-            </li>
+            {legalLinks.map((link) => (
+              <li key={link.href}>
+                <a href={link.href}>{link.label}</a>
+              </li>
+            ))}
             <li>
               <a href={loginHref} data-cta="login">Log In</a>
             </li>
