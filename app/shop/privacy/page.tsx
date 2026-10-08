@@ -4,11 +4,12 @@ import { legalLinks } from "@/lib/app-links";
 import { site } from "@/lib/site";
 
 export const metadata: Metadata = {
-  title: "Privacy",
+  title: "Shop privacy note",
   description: "What this website does with shop orders, free-file emails, and contact messages.",
+  alternates: { canonical: "/shop/privacy" },
 };
 
-export default function PrivacyPage() {
+export default function ShopPrivacyPage() {
   return (
     <section className="section privacy">
       <div className="wrap privacy-wrap">
@@ -62,7 +63,7 @@ export default function PrivacyPage() {
             <p>
               The file downloads in your browser after payment, and a copy is emailed to you. If it
               doesn’t arrive, or you need a refund, email{" "}
-              <a href={`mailto:${site.email}`}>{site.email}</a> and I’ll handle it.
+              <a href={`mailto:${site.supportEmail}`}>{site.supportEmail}</a> and I’ll handle it.
             </p>
           </article>
           <article className="privacy-card">
@@ -77,7 +78,7 @@ export default function PrivacyPage() {
             <p>
               If you ask for a free file or buy something here, I keep your email so I can send what you asked for
               and, later, a note about something new. Those notes include a link to leave the list. You can also
-              email <a href={`mailto:${site.email}`}>{site.email}</a> and say delete.
+              email <a href={`mailto:${site.privacyEmail}`}>{site.privacyEmail}</a> and say delete.
             </p>
           </article>
           <article className="privacy-card">
@@ -90,7 +91,7 @@ export default function PrivacyPage() {
           <article className="privacy-card privacy-wide privacy-last">
             <h2>Taking you off the list</h2>
             <p>
-              Email <a href={`mailto:${site.email}`}>{site.email}</a> and say delete. I’ll remove what I
+              Email <a href={`mailto:${site.privacyEmail}`}>{site.privacyEmail}</a> and say delete. I’ll remove what I
               have.
             </p>
           </article>

@@ -98,7 +98,7 @@ export function FreeDownload({
         {status === "loading" ? "Sending…" : label || "Send me the file"}
       </button>
       <p className="fine">
-        The file downloads here, and a copy goes to this email. <Link href="/privacy">Privacy note</Link>
+        The file downloads here, and a copy goes to this email. <Link href="/shop/privacy">Privacy note</Link>
       </p>
     </form>
   );

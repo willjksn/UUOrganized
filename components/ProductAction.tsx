@@ -30,7 +30,7 @@ export function ProductAction({ product }: { product: Product }) {
           {product.ships
             ? "Pay by card. Shipping is added for the address at checkout."
             : "Pay by card. The file downloads after payment, and a copy is emailed."}{" "}
-          <Link href="/privacy">Privacy note</Link>
+          <Link href="/shop/privacy">Privacy note</Link>
         </p>
       </form>
     );

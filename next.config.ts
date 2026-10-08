@@ -15,6 +15,7 @@ const nextConfig: NextConfig = {
     return [
       { source: "/admin/letters", destination: "/admin/emails", permanent: false },
       { source: "/admin/words", destination: "/admin/pages", permanent: false },
+      { source: "/privacy", destination: "https://app.uuorganized.com/privacy", permanent: true },
     ];
   },
 };

@@ -2,8 +2,12 @@ export const site = {
   name: "Unhinged. Unfiltered. Organized.",
   shortName: "UUO",
   author: "Stormi J.",
+  entity: "Insight Media Group LLC d/b/a UU Organized",
   url: process.env.SITE_URL || "https://uuorganized.com",
   email: process.env.CONTACT_EMAIL || "contact@uuorganized.com",
+  supportEmail: "support@uuorganized.com",
+  privacyEmail: "privacy@uuorganized.com",
+  legalEmail: "legal@uuorganized.com",
   description:
     "Practical systems for the shit nobody tells you about. The book, printables, and UU Organized app by Stormi J.",
   amazon:

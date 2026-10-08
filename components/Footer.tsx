@@ -23,27 +23,34 @@ export async function Footer() {
             height={758}
           />
         </div>
-        <nav aria-label="Footer">
-          <p className="eyebrow">Pages</p>
-          <ul className="footer-links">
-            {pages.map((page) => (
-              <li key={page.href}>
-                <Link href={page.href}>{page.label}</Link>
+        <div>
+          <nav aria-label="Footer">
+            <p className="eyebrow">Pages</p>
+            <ul className="footer-links">
+              {pages.map((page) => (
+                <li key={page.href}>
+                  <Link href={page.href}>{page.label}</Link>
+                </li>
+              ))}
+              <li>
+                <a href={loginHref} data-cta="login">Log In</a>
               </li>
-            ))}
-            {legalLinks.map((link) => (
-              <li key={link.href}>
-                <a href={link.href}>{link.label}</a>
+              <li>
+                <a href={signupHref("free")} data-cta="start-free">Start Free</a>
               </li>
-            ))}
-            <li>
-              <a href={loginHref} data-cta="login">Log In</a>
-            </li>
-            <li>
-              <a href={signupHref("free")} data-cta="start-free">Start Free</a>
-            </li>
-          </ul>
-        </nav>
+            </ul>
+          </nav>
+          <nav aria-label="Legal">
+            <p className="eyebrow social-label">Legal</p>
+            <ul className="footer-links">
+              {legalLinks.map((link) => (
+                <li key={link.href}>
+                  <a href={link.href}>{link.label}</a>
+                </li>
+              ))}
+            </ul>
+          </nav>
+        </div>
         <div>
           <p className="eyebrow">The shop</p>
           <div className="chip-row">
@@ -59,7 +66,6 @@ export async function Footer() {
               Etsy
             </a>
           </div>
-          <p className="fine">As an Amazon Associate, I earn from qualifying purchases.</p>
           {socials.length ? (
             <>
               <p className="eyebrow social-label">{site.name}</p>
@@ -85,7 +91,7 @@ export async function Footer() {
         </div>
       </div>
       <div className="wrap footer-fine">
-        <p>© {new Date().getFullYear()} {site.author} Unhinged. Unfiltered. Organized.</p>
+        <p>© {new Date().getFullYear()} {site.entity}. {site.name}</p>
       </div>
     </footer>
   );

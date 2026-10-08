@@ -96,7 +96,7 @@ export function EmailSignup({
       </button>
       <p className="fine">
         {note ? <>{note} </> : null}
-        <Link href="/privacy">Privacy note</Link>
+        <Link href="/shop/privacy">Privacy note</Link>
       </p>
     </form>
   );
