@@ -8,12 +8,20 @@ import { Portrait } from "@/components/Portrait";
 import { StoryBlurb } from "@/components/StoryBlurb";
 import { ProductCard } from "@/components/ProductCard";
 import { getCatalog } from "@/lib/catalog";
+import { withPublicHome } from "@/lib/copy";
 import { publishedPosts, readPosts } from "@/lib/posts";
+import { signupHref } from "@/lib/app-links";
 import { site } from "@/lib/site";
 
 export default async function HomePage() {
   const catalog = await getCatalog();
-  const copy = catalog.copy;
+  const copy = withPublicHome(catalog.copy);
+  const heroLede = copy.homeLede.includes("UU Organized helps")
+    ? [
+        copy.homeLede.slice(0, copy.homeLede.indexOf("UU Organized helps")).trim(),
+        copy.homeLede.slice(copy.homeLede.indexOf("UU Organized helps")).trim(),
+      ]
+    : [copy.homeLede];
   const featured = catalog.products.filter((product) => product.featured);
   const notes = publishedPosts(await readPosts());
   const notePreview = notes.slice(0, 3);
@@ -55,7 +63,11 @@ export default async function HomePage() {
               ) : null}
             </h1>
             <Brush />
-            <p className="lede">{copy.homeLede}</p>
+            {heroLede.map((paragraph, index) => (
+              <p className={index === 0 ? "lede" : "hero-support"} key={paragraph}>
+                {paragraph}
+              </p>
+            ))}
             <div className="actions">
               <ActionLink className="button" href={copy.homePrimaryHref}>
                 {copy.homePrimaryCta}
@@ -66,6 +78,9 @@ export default async function HomePage() {
                 </ActionLink>
               ) : null}
             </div>
+            <p className="fine hero-next">
+              <ActionLink href="/shop#book">Shop the book</ActionLink>
+            </p>
           </div>
           <figure className="hero-cover">
             <Picture
@@ -88,6 +103,53 @@ export default async function HomePage() {
           ))}
         </ul>
       </div>
+
+      <section className="section band" aria-labelledby="command-home-heading">
+        <div className="wrap">
+          <div className="section-head">
+            <p className="eyebrow">Caregiver Command Center</p>
+            <h2 id="command-home-heading">The book teaches the system. The app helps you run it.</h2>
+            <p className="lede">
+              Open the Command Center when the list is still in your head: the dose, the appointment, the
+              reference number, and who is taking the next turn.
+            </p>
+          </div>
+          <div className="command-preview">
+            <article>
+              <h3>Today</h3>
+              <p>Medications, visits, follow-ups, and the things you are waiting on, gathered into the day you are in.</p>
+            </article>
+            <article>
+              <h3>Medications</h3>
+              <p>The schedule you enter, a photo of the label, and the refill note. You review it before it is saved.</p>
+            </article>
+            <article>
+              <h3>The calls</h3>
+              <p>Insurance, the pharmacy, the agency. The name, the number, and the reference number have a place.</p>
+            </article>
+            <article>
+              <h3>Supplies</h3>
+              <p>The things you cannot run out of, with the reorder link for the place you already buy them.</p>
+            </article>
+            <article>
+              <h3>The handoff</h3>
+              <p>What the next person actually needs when they take a shift, instead of another group text.</p>
+            </article>
+            <article>
+              <h3>Say it once</h3>
+              <p>Type it, say it, or photograph it. Ask later about what is already written down.</p>
+            </article>
+          </div>
+          <div className="actions">
+            <ActionLink className="button" href="/command-center">
+              Explore the Command Center
+            </ActionLink>
+            <a className="button button-ghost" href={signupHref("free")}>
+              Start Free
+            </a>
+          </div>
+        </div>
+      </section>
 
       <section className="section">
         <div className="wrap">

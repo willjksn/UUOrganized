@@ -4,6 +4,7 @@ import { Footer } from "@/components/Footer";
 import { Header } from "@/components/Header";
 import { PromoBar } from "@/components/PromoBar";
 import { getCatalog } from "@/lib/catalog";
+import { withPublicHome } from "@/lib/copy";
 import { site } from "@/lib/site";
 import "./globals.css";
 
@@ -22,7 +23,7 @@ const sans = Outfit({
 });
 
 export async function generateMetadata(): Promise<Metadata> {
-  const { copy } = await getCatalog();
+  const copy = withPublicHome((await getCatalog()).copy);
   return {
     metadataBase: new URL(site.url),
     title: {
@@ -62,7 +63,7 @@ export const viewport: Viewport = {
 };
 
 export default async function RootLayout({ children }: { children: React.ReactNode }) {
-  const { copy } = await getCatalog();
+  const copy = withPublicHome((await getCatalog()).copy);
   return (
     <html lang="en" className={`${display.variable} ${sans.variable}`}>
       <body>

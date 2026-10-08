@@ -1,15 +1,11 @@
 import Link from "next/link";
+import { loginHref, signupHref } from "@/lib/app-links";
 import { getCatalog, publicSocials } from "@/lib/catalog";
+import { publicNav } from "@/lib/nav";
 import { site } from "@/lib/site";
 import { SocialIcon } from "./SocialIcon";
 
-const pages = [
-  { href: "/", label: "Home" },
-  { href: "/shop", label: "Shop" },
-  { href: "/about", label: "About" },
-  { href: "/blog", label: "Blog" },
-  { href: "/contact", label: "Contact" },
-];
+const pages = [...publicNav, { href: "/pricing", label: "Pricing" }, { href: "/contact", label: "Contact" }];
 
 export async function Footer() {
   const catalog = await getCatalog();
@@ -37,6 +33,12 @@ export async function Footer() {
             ))}
             <li>
               <Link href="/privacy">Privacy</Link>
+            </li>
+            <li>
+              <a href={loginHref}>Log In</a>
+            </li>
+            <li>
+              <a href={signupHref("free")}>Start Free</a>
             </li>
           </ul>
         </nav>

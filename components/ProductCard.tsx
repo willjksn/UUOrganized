@@ -1,4 +1,5 @@
 import type { Product } from "@/lib/products";
+import { BookToApp } from "./BookToApp";
 import { Picture } from "./Picture";
 import { ProductAction } from "./ProductAction";
 
@@ -20,6 +21,7 @@ export function ProductCard({ product }: { product: Product }) {
         <p>{product.summary}</p>
         <p className="price">{product.priceLabel}</p>
         <ProductAction product={product} />
+        {product.slug === "book" ? <BookToApp compact /> : null}
       </div>
     </article>
   );

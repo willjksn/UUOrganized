@@ -1,3 +1,4 @@
+import { signupHref } from "./app-links";
 import { site } from "./site";
 
 export type SiteCopy = {
@@ -69,13 +70,14 @@ export function defaultCopy(): SiteCopy {
     promoMessage: "",
     promoCode: "",
     homeEyebrow: "Unhinged. Unfiltered. Organized.",
-    homeHeadline: "Real. Ready.",
-    homeHeadlineEm: "Slightly unhinged.",
-    homeLede: "Practical systems for the shit nobody tells you about.",
-    homePrimaryCta: "Shop the Tools",
-    homePrimaryHref: "/shop",
-    homeSecondaryCta: "Get the free checklist",
-    homeSecondaryHref: "#checklist",
+    homeHeadline: "Everything living in your head,",
+    homeHeadlineEm: "finally in one place.",
+    homeLede:
+      "Appointments. Medications. Supplies. Insurance calls. Reference numbers. Follow-ups. Family updates. The things you're waiting on. UU Organized helps you keep track of it all, with AI helping organize the chaos.",
+    homePrimaryCta: "Start Free",
+    homePrimaryHref: signupHref("free"),
+    homeSecondaryCta: "Explore the Command Center",
+    homeSecondaryHref: "/command-center",
     heroImage: "/images/book-cover.jpg",
     heroImageAlt: "Book cover of Who the Hell Put Me in Charge?! by Stormi J.",
     heroCaption: "Who the Hell Put Me in Charge?! · Stormi J.",
@@ -188,4 +190,28 @@ export function fillCopy(value: unknown): SiteCopy {
   }
 
   return copy;
+}
+
+const legacyDescription =
+  "Practical systems for the shit nobody tells you about. The book, printables, and tools by Stormi J.";
+
+export function withPublicHome(copy: SiteCopy): SiteCopy {
+  const defaults = defaultCopy();
+  const legacyHero =
+    copy.homeHeadline === "Real. Ready." &&
+    copy.homePrimaryCta === "Shop the Tools" &&
+    copy.homePrimaryHref.replace(/\/$/, "") === "/shop";
+  const description = copy.description === legacyDescription ? defaults.description : copy.description;
+  if (!legacyHero) return { ...copy, description };
+  return {
+    ...copy,
+    description,
+    homeHeadline: defaults.homeHeadline,
+    homeHeadlineEm: defaults.homeHeadlineEm,
+    homeLede: defaults.homeLede,
+    homePrimaryCta: defaults.homePrimaryCta,
+    homePrimaryHref: defaults.homePrimaryHref,
+    homeSecondaryCta: defaults.homeSecondaryCta,
+    homeSecondaryHref: defaults.homeSecondaryHref,
+  };
 }

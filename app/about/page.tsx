@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { ActionLink } from "@/components/ActionLink";
+import { BookToApp } from "@/components/BookToApp";
 import { Brush } from "@/components/Brush";
 import { Paragraphs } from "@/components/Paragraphs";
 import { Portrait } from "@/components/Portrait";
@@ -58,6 +59,7 @@ export default async function AboutPage() {
                 </ActionLink>
               ) : null}
             </div>
+            <BookToApp compact />
           </div>
         </div>
       </section>

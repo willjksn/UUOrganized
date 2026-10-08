@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { ActionLink } from "@/components/ActionLink";
+import { BookToApp } from "@/components/BookToApp";
 import { Paragraphs } from "@/components/Paragraphs";
 import { ProductAction } from "@/components/ProductAction";
 import { ProductCard } from "@/components/ProductCard";
@@ -73,6 +74,7 @@ export default async function ShopPage({
               <p className="price">{feature.priceLabel}</p>
               <p className="fine">By {site.author}</p>
               <ProductAction product={feature} />
+              {feature.slug === "book" ? <BookToApp /> : null}
             </div>
           </article>
         ) : null}

@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { isAppHref } from "@/lib/app-links";
 
 export function ActionLink({
   href,
@@ -11,6 +12,13 @@ export function ActionLink({
 }) {
   if (!href) return null;
   if (href.startsWith("http")) {
+    if (isAppHref(href)) {
+      return (
+        <a className={className} href={href}>
+          {children}
+        </a>
+      );
+    }
     return (
       <a
         className={className}
