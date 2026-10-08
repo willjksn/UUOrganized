@@ -954,6 +954,16 @@ video.blog-hero {
   gap: 3.25rem;
 }
 
+.shop-spotlight {
+  display: grid;
+  gap: 1.5rem;
+  align-items: start;
+}
+
+.shop-spotlight .section-head {
+  margin-bottom: 0;
+}
+
 .cover-pair {
   display: grid;
   grid-template-columns: 1fr;
@@ -1813,6 +1823,28 @@ code {
   .book-feature {
     grid-template-columns: 1.12fr 0.88fr;
     gap: 3.5rem;
+  }
+
+  .shop-spotlight {
+    grid-template-columns: 1.12fr 0.88fr;
+    column-gap: 3.5rem;
+    row-gap: 1.25rem;
+  }
+
+  .shop-spotlight .section-head {
+    grid-column: 1;
+    grid-row: 1;
+    max-width: none;
+  }
+
+  .shop-spotlight .cover-pair {
+    grid-column: 1;
+    grid-row: 2;
+  }
+
+  .shop-spotlight .prose {
+    grid-column: 2;
+    grid-row: 1 / span 2;
   }
 
   .hero-cover img {

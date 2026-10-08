@@ -84,9 +84,9 @@ export function PricingBoard({
         <div className="compare-intro">
           <h2>What each plan includes</h2>
           <p>
-            The book and printables stay in the shop. Inside the app, the care tools are on every plan.
-            Plans differ by how many people they hold, how much AI and document storage you get, exports,
-            reminders, and whether the family can message each other.
+            The book and printables stay in the shop. Care-team coverage is on every plan. Family is the
+            larger team, and the one with messaging. Plans also differ by AI, document storage, exports,
+            and reminders.
           </p>
         </div>
         {groups.map((group) => (

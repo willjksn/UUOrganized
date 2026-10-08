@@ -31,13 +31,6 @@ export default async function ShopPage({
   return (
     <section className="section">
       <div className="wrap stack">
-        <div className="section-head">
-          <p className="eyebrow">{copy.shopEyebrow}</p>
-          <h1>{copy.shopHeading}</h1>
-          <Brush />
-          <p className="lede">{copy.shopLede}</p>
-        </div>
-
         {params.checkout === "unavailable" ? (
           <p className="form-error" role="alert">
             The payment page didn’t open. Try again in a minute.
@@ -50,7 +43,13 @@ export default async function ShopPage({
         ) : null}
 
         {feature ? (
-          <article className="book-feature" id={feature.slug}>
+          <article className="shop-spotlight" id={feature.slug}>
+            <div className="section-head">
+              <p className="eyebrow">{copy.shopEyebrow}</p>
+              <h1>{copy.shopHeading}</h1>
+              <Brush />
+              <p className="lede">{copy.shopLede}</p>
+            </div>
             <div className={feature.backImage ? "cover-pair" : "cover-pair single"}>
               <Picture
                 src={feature.image}

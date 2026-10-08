@@ -165,17 +165,29 @@ export const planComparison: PlanComparisonGroup[] = [
     title: "Collaboration",
     rows: [
       {
-        label: "Workspace members",
+        label: "Care-team coverage / “Who’s got this?”",
+        values: onEveryPlan,
+      },
+      {
+        label: "Members",
         values: [
-          { text: "Up to 2 members", tone: "limited" },
-          { text: "Up to 4 members", tone: "in" },
-          { text: "Up to 10 members", tone: "in" },
+          { text: "Up to 2", tone: "limited" },
+          { text: "Up to 4", tone: "in" },
+          { text: "Up to 10", tone: "in" },
+        ],
+      },
+      {
+        label: "Care recipients",
+        values: [
+          { text: "1", tone: "limited" },
+          { text: "1", tone: "limited" },
+          { text: "3", tone: "in" },
         ],
       },
       { label: "Roles and recipient access", values: onEveryPlan },
       { label: "Task ownership and handoffs", values: onEveryPlan },
       {
-        label: "Family sharing and messaging",
+        label: "Family messaging",
         values: [notIncluded, notIncluded, included],
       },
     ],

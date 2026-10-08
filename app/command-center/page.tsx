@@ -31,7 +31,7 @@ const chapters = [
     items: [
       {
         title: "Today",
-        body: "Medications, visits, follow-ups, and waiting items land on Today. If the day is clear, it stays clear.",
+        body: "Medications, visits, follow-ups, and waiting items land on Today. If a visit still needs someone there, or a ride, that uncovered need can show up here too.",
       },
       {
         title: "Needs Attention",
@@ -39,7 +39,7 @@ const chapters = [
       },
       {
         title: "Calendar",
-        body: "Doctor visits, therapy, home health, rides, deliveries, and your own time. An appointment is who it is with, when it is, and why you are going.",
+        body: "Doctor visits, therapy, home health, rides, deliveries, and your own time. If that visit needs someone there or a ride, the coverage sits with the appointment.",
       },
       {
         title: "Tasks",
@@ -198,6 +198,32 @@ const chapters = [
     ],
   },
   {
+    id: "coverage",
+    band: "",
+    eyebrow: "Who's got this?",
+    title: "Care doesn't stop just because the primary caregiver is busy, working, or out of town.",
+    intro:
+      "When a visit, appointment, ride, or task needs someone, the care team can see what still needs coverage and take ownership. Once someone takes it, the rest of the team can see who has it covered.",
+    items: [
+      {
+        title: "I can be there.",
+        body: "A CNA is coming Tuesday. Someone on the care team can choose to be there.",
+      },
+      {
+        title: "I can drive.",
+        body: "A doctor appointment needs a ride. Someone can take that drive.",
+      },
+      {
+        title: "I've got this.",
+        body: "A medication pickup is still unassigned. A team member can claim that task.",
+      },
+      {
+        title: "Still open",
+        body: "If nobody has taken it yet, the need can show on Today and with that appointment on the calendar.",
+      },
+    ],
+  },
+  {
     id: "capture",
     band: "band-sage",
     eyebrow: "AI that organizes the chaos",
@@ -310,6 +336,9 @@ export default function CommandCenterPage() {
           <div className="section-head">
             <p className="eyebrow">How the plans fit</p>
             <h2 id="plans-heading">Start with one person. Make room when the list grows.</h2>
+            <p className="lede">
+              Who&apos;s got this? is on every plan. Family is the larger team, and the one with messaging.
+            </p>
           </div>
           <div className="detail-grid detail-grid-plans">
             <article>
