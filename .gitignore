@@ -8,6 +8,7 @@ out
 data/*.ndjson
 data/audience.json
 data/drafts.json
+data/admin-password.json
 data/purchases/
 public/uploads/*
 !public/uploads/.gitkeep

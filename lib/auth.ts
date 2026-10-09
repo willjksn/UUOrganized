@@ -15,11 +15,12 @@ function sameSecret(left: string, right: string) {
   return timingSafeEqual(a, b);
 }
 
-export function checkLogin(email: string, password: string) {
+export async function checkLogin(email: string, password: string) {
   const expectedEmail = process.env.ADMIN_EMAIL?.trim().toLowerCase() || "";
-  const expectedPassword = process.env.ADMIN_PASSWORD?.trim() || "";
-  if (!expectedEmail || !expectedPassword) return false;
-  return sameSecret(email.trim().toLowerCase(), expectedEmail) && sameSecret(password.trim(), expectedPassword);
+  if (!expectedEmail || !process.env.ADMIN_PASSWORD?.trim()) return false;
+  if (!sameSecret(email.trim().toLowerCase(), expectedEmail)) return false;
+  const { passwordMatches } = await import("./admin-password");
+  return passwordMatches(password.trim());
 }
 
 export function createSession() {

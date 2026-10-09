@@ -180,6 +180,23 @@ export async function sendShipment(to: string, productName: string, total: strin
   });
 }
 
+export async function sendAdminReset(to: string, resetUrl: string) {
+  const from = process.env.RESEND_FROM || `Stormi J <${site.email}>`;
+  return send({
+    from,
+    to,
+    subject: "Reset Your Admin Password",
+    text: [
+      "A password reset was requested for the UU Organized admin.",
+      "",
+      "This link works for 30 minutes:",
+      resetUrl,
+      "",
+      "If you didn’t ask for this, ignore it. The current password stays as it is.",
+    ].join("\n"),
+  });
+}
+
 export async function sendUnsubscribed(to: string) {
   const from = process.env.RESEND_FROM || `Stormi J <${site.email}>`;
   const back = resubscribeLink(to, site.url);

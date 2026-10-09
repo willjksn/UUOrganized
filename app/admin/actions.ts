@@ -86,7 +86,7 @@ export async function loginAction(formData: FormData) {
 
   const email = cleanText(formData.get("email"), 254);
   const password = cleanText(formData.get("password"), 200);
-  if (!checkLogin(email, password)) redirect("/admin/login?error=1");
+  if (!(await checkLogin(email, password))) redirect("/admin/login?error=1");
 
   const jar = await cookies();
   jar.set(ADMIN_COOKIE, createSession(), sessionCookieOptions());

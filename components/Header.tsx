@@ -4,7 +4,6 @@ import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import { usePathname } from "next/navigation";
-import { loginHref } from "@/lib/app-links";
 import { publicNav } from "@/lib/nav";
 
 export function Header() {
@@ -43,9 +42,6 @@ export function Header() {
                   </li>
                 );
               })}
-              <li>
-                <a href={loginHref} data-cta="login">Log In</a>
-              </li>
             </ul>
           </nav>
           <button

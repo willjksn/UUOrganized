@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { loginAction } from "../actions";
+import { requestAdminResetAction } from "../reset/actions";
 import { isAdmin } from "@/lib/auth";
 import { redirect } from "next/navigation";
 
@@ -12,16 +13,19 @@ const errors: Record<string, string> = {
   "1": "That email or password doesn’t match.",
   rate: "Too many tries. Wait a minute.",
   setup: "Admin login isn’t set up yet.",
+  mail: "The reset email didn’t send. Try again in a minute.",
+  save: "The reset didn’t save. Try again in a minute.",
 };
 
 export default async function LoginPage({
   searchParams,
 }: {
-  searchParams: Promise<{ error?: string }>;
+  searchParams: Promise<{ error?: string; sent?: string }>;
 }) {
   if (await isAdmin()) redirect("/admin");
   const params = await searchParams;
   const error = params.error ? errors[params.error] || "Try again." : "";
+  const sent = params.sent === "1";
 
   return (
     <section className="section">
@@ -53,6 +57,15 @@ export default async function LoginPage({
             Log in
           </button>
         </form>
+        {sent ? (
+          <p>A reset link is on its way to the admin email. It works for 30 minutes.</p>
+        ) : (
+          <form className="signup" action={requestAdminResetAction}>
+            <button className="button button-ghost" type="submit">
+              Reset password
+            </button>
+          </form>
+        )}
       </div>
     </section>
   );
