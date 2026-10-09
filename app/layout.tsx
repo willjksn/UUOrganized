@@ -1,5 +1,5 @@
 import type { Metadata, Viewport } from "next";
-import { Fraunces, Outfit } from "next/font/google";
+import { Lora, Outfit } from "next/font/google";
 import { Footer } from "@/components/Footer";
 import { Header } from "@/components/Header";
 import { PromoBar } from "@/components/PromoBar";
@@ -10,8 +10,9 @@ import "./globals.css";
 
 export const dynamic = "force-dynamic";
 
-const display = Fraunces({
+const display = Lora({
   subsets: ["latin"],
+  weight: ["500", "600"],
   display: "swap",
   variable: "--font-display",
 });
