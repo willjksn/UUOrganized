@@ -73,10 +73,10 @@ export function defaultCopy(): SiteCopy {
     homeHeadline: "Everything living in your head,",
     homeHeadlineEm: "finally in one place.",
     homeLede:
-      "Appointments. Medications. Supplies. Insurance calls. Reference numbers. Follow-ups. Family updates. The things you're waiting on. UU Organized helps you keep track of it all, with AI helping organize the chaos.",
+      "Appointments. Medications. Supplies. Insurance calls. Reference numbers. Follow-ups. Family updates. The things you're waiting on. UUO Command Center helps you keep track of it all, with AI helping organize the chaos.",
     homePrimaryCta: "Start Free",
     homePrimaryHref: signupHref("free"),
-    homeSecondaryCta: "Explore the Command Center",
+    homeSecondaryCta: "Explore the UUO command Center",
     homeSecondaryHref: "/command-center",
     heroImage: "/images/book-cover.jpg",
     heroImageAlt: "Book cover of Who the Hell Put Me in Charge?! by Stormi J.",

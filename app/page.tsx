@@ -16,11 +16,9 @@ import { site } from "@/lib/site";
 export default async function HomePage() {
   const catalog = await getCatalog();
   const copy = withPublicHome(catalog.copy);
-  const heroLede = copy.homeLede.includes("UU Organized helps")
-    ? [
-        copy.homeLede.slice(0, copy.homeLede.indexOf("UU Organized helps")).trim(),
-        copy.homeLede.slice(copy.homeLede.indexOf("UU Organized helps")).trim(),
-      ]
+  const supportAt = copy.homeLede.indexOf("UUO Command Center helps");
+  const heroLede = supportAt > 0
+    ? [copy.homeLede.slice(0, supportAt).trim(), copy.homeLede.slice(supportAt).trim()]
     : [copy.homeLede];
   const featured = catalog.products.filter((product) => product.featured);
   const notes = publishedPosts(await readPosts());
@@ -107,7 +105,7 @@ export default async function HomePage() {
       <section className="section band" aria-labelledby="command-home-heading">
         <div className="wrap">
           <div className="section-head">
-            <p className="eyebrow">The UU Organized App</p>
+            <p className="eyebrow">The UUO Command Center App</p>
             <h2 id="command-home-heading">The book teaches the system. The app helps you run it.</h2>
             <p className="lede">
               Open the app when the list is still in your head: the dose, the appointment, the reference
