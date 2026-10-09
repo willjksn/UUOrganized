@@ -91,7 +91,7 @@ export async function Footer() {
         </div>
       </div>
       <div className="wrap footer-fine">
-        <p>© {new Date().getFullYear()} {site.entity}. {site.name}</p>
+        <p>© {new Date().getFullYear()} {site.name}</p>
       </div>
     </footer>
   );

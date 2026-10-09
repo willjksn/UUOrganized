@@ -105,7 +105,7 @@ export default async function HomePage() {
       <section className="section band" aria-labelledby="command-home-heading">
         <div className="wrap">
           <div className="section-head">
-            <p className="eyebrow">The UUO Command Center App</p>
+            <p className="eyebrow">The UUO Command Center</p>
             <h2 id="command-home-heading">The book teaches the system. The app helps you run it.</h2>
             <p className="lede">
               Open the app when the list is still in your head: the dose, the appointment, the reference
@@ -143,7 +143,7 @@ export default async function HomePage() {
               Start Free
             </a>
             <ActionLink className="button button-ghost" href="/command-center" cta="explore-command-center">
-              Explore the Command Center
+              Explore the UUO Command Center
             </ActionLink>
           </div>
         </div>
