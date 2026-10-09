@@ -310,7 +310,7 @@ export default function CommandCenterPage() {
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
       <section className="section">
         <div className="wrap narrow">
-          <p className="eyebrow">The UU Organized App</p>
+          <p className="eyebrow">The UUO Command Center</p>
           <h1>One place for the care you are already holding.</h1>
           <Brush />
           <p className="lede">
