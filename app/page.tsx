@@ -1,4 +1,5 @@
 import { ActionLink } from "@/components/ActionLink";
+import { FaqList } from "@/components/FaqList";
 import { BlogCard } from "@/components/BlogCard";
 import { Brush } from "@/components/Brush";
 import { EmailSignup } from "@/components/EmailSignup";
@@ -11,10 +12,11 @@ import { getCatalog } from "@/lib/catalog";
 import { withPublicHome } from "@/lib/copy";
 import { publishedPosts, readPosts } from "@/lib/posts";
 import { signupHref } from "@/lib/app-links";
+import { getPricingView } from "@/lib/pricing-view";
 import { site } from "@/lib/site";
 
 export default async function HomePage() {
-  const catalog = await getCatalog();
+  const [catalog, pricing] = await Promise.all([getCatalog(), getPricingView()]);
   const copy = withPublicHome(catalog.copy);
   const supportAt = copy.homeLede.indexOf("UUO Command Center helps");
   const heroLede = supportAt > 0
@@ -212,6 +214,22 @@ export default async function HomePage() {
             {copy.checklistAttitude ? <p className="attitude">{copy.checklistAttitude}</p> : null}
             <Paragraphs text={copy.checklistBody} />
             <EmailSignup buttonLabel={copy.checklistButton} note={copy.checklistNote} />
+          </div>
+        </div>
+      </section>
+
+      <section className="section" aria-labelledby="home-faq-heading">
+        <div className="wrap">
+          <div className="section-head">
+            <p className="eyebrow">UUO Command Center app</p>
+            <h2 id="home-faq-heading">The stuff you should not have to guess.</h2>
+            <p className="lede">These answers are for the UUO Command Center app.</p>
+          </div>
+          <FaqList items={pricing.preview} />
+          <div className="actions">
+            <ActionLink className="button button-ghost" href="/faq" cta="see-faq">
+              See all FAQs
+            </ActionLink>
           </div>
         </div>
       </section>

@@ -1,11 +1,11 @@
 import Link from "next/link";
-import { legalLinks, loginHref, signupHref } from "@/lib/app-links";
+import { legalLinks, signupHref } from "@/lib/app-links";
 import { getCatalog, publicSocials } from "@/lib/catalog";
-import { publicNav } from "@/lib/nav";
+import { footerPages } from "@/lib/nav";
 import { site } from "@/lib/site";
 import { SocialIcon } from "./SocialIcon";
 
-const pages = [...publicNav, { href: "/pricing", label: "Pricing" }, { href: "/contact", label: "Contact" }];
+const pages = footerPages;
 
 export async function Footer() {
   const catalog = await getCatalog();
@@ -32,9 +32,6 @@ export async function Footer() {
                   <Link href={page.href}>{page.label}</Link>
                 </li>
               ))}
-              <li>
-                <a href={loginHref} data-cta="login">Log In</a>
-              </li>
               <li>
                 <a href={signupHref("free")} data-cta="start-free">Start Free</a>
               </li>

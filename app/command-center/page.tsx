@@ -3,6 +3,7 @@ import Link from "next/link";
 import { Brush } from "@/components/Brush";
 import { Picture } from "@/components/Picture";
 import { signupHref } from "@/lib/app-links";
+import { getPricingView } from "@/lib/pricing-view";
 import { site } from "@/lib/site";
 
 const description =
@@ -185,7 +186,7 @@ const chapters = [
       },
       {
         title: "People Helping",
-        body: "Family, caregivers, and helpers who can sign in. They join the workspace you already have. A caregiver spot is not a second subscription, and access can be limited to the people they are actually helping.",
+        body: "Family, caregivers, and helpers who can sign in. They join the workspace you already have. The Workspace Owner manages the subscription. Invited caregivers, helpers, admins, and viewers do not purchase a separate plan. Access can be limited to the people they are actually helping.",
       },
       {
         title: "Handoffs",
@@ -295,7 +296,8 @@ const chapters = [
   },
 ];
 
-export default function CommandCenterPage() {
+export default async function CommandCenterPage() {
+  const pricing = await getPricingView();
   const jsonLd = {
     "@context": "https://schema.org",
     "@type": "WebPage",
@@ -358,27 +360,40 @@ export default function CommandCenterPage() {
           <div className="section-head">
             <p className="eyebrow">How the plans fit</p>
             <h2 id="plans-heading">Start with one person. Make room when the list grows.</h2>
-            <p className="lede">
-              Who&apos;s got this? is on every plan. Caregiver Family is the larger team, and the one with messaging.
+            <p className="lede">Invite the people helping you care.</p>
+            <p>
+              The Workspace Owner manages the subscription. Invited caregivers, helpers, admins, and viewers do
+              not purchase a separate plan. Who&apos;s got this? is on every plan. Caregiver Family is the larger
+              team, and the one with family sharing and messaging.
             </p>
           </div>
           <div className="detail-grid detail-grid-plans">
-            <article>
-              <p className="eyebrow">Free</p>
-              <h3>Get organized.</h3>
-              <p>1 person you care for and 2 caregiver spots. Limited AI assistance, so you can see whether one place for care actually helps.</p>
-            </article>
-            <article>
-              <p className="eyebrow">Caregiver</p>
-              <h3>I manage care.</h3>
-              <p>1 person you care for and 4 caregiver spots, with generous AI, exports, and advanced reminders for the person keeping the list.</p>
-            </article>
-            <article>
-              <p className="eyebrow">Caregiver Family</p>
-              <h3>We manage care.</h3>
-              <p>Up to 3 people you care for and 10 caregiver spots, with messaging, family collaboration, and expanded AI for the people sharing the care.</p>
-            </article>
+            {pricing.plans.map((plan) => (
+              <article key={plan.key} data-plan={plan.key}>
+                <p className="eyebrow">{plan.name}</p>
+                <h3>{plan.outcome}</h3>
+                <p className="plan-fit-price">
+                  {plan.monthlyPrice}/month
+                  {plan.annualEquivalent ? ` or ${plan.annualPrice}/year` : ""}
+                </p>
+                <ul className="plan-points">
+                  {plan.points.map((point) => (
+                    <li key={point}>{point}</li>
+                  ))}
+                </ul>
+              </article>
+            ))}
           </div>
+          <aside className="addon-callout" aria-label="Optional add-ons">
+            <p className="eyebrow">Optional add-ons</p>
+            {pricing.addons.map((addon) => (
+              <p key={addon.key}>
+                <strong>{addon.name}</strong>, {addon.monthlyPrice} or {addon.annualPrice}. {addon.description}{" "}
+                {addon.eligibility}.
+              </p>
+            ))}
+            <p className="addon-annual-note">{pricing.annualMessage}.</p>
+          </aside>
           <div className="actions">
             <Link className="button" href="/pricing" data-cta="see-pricing">
               Compare plans
@@ -386,6 +401,9 @@ export default function CommandCenterPage() {
             <a className="button button-ghost" href={signupHref("free")} data-cta="start-free">
               Start Free
             </a>
+            <Link className="button button-ghost" href="/faq">
+              See the FAQ
+            </Link>
           </div>
         </div>
       </section>

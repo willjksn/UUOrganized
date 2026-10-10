@@ -2375,6 +2375,179 @@ section.hero {
     grid-template-columns: repeat(3, minmax(0, 1fr));
   }
 }
+.interval-switch {
+  flex-wrap: wrap;
+  row-gap: 0.4rem;
+}
+
+.save-note {
+  margin: 0;
+  color: var(--rose-deep);
+  font-size: 0.95rem;
+  font-weight: 650;
+}
+
+.plan-yearly {
+  margin: -0.15rem 0 0;
+  font-weight: 650;
+}
+
+.addon-board,
+.addon-callout {
+  margin-top: 1.35rem;
+  padding: 1.15rem 1.15rem 1.2rem;
+  background: var(--paper);
+  border: 1px solid var(--line);
+}
+
+.addon-head h2 {
+  margin-bottom: 0.35rem;
+  font-size: clamp(1.7rem, 3vw, 2.2rem);
+}
+
+.addon-head p,
+.addon-callout .eyebrow {
+  margin-bottom: 0.85rem;
+}
+
+.addon-grid {
+  display: grid;
+  gap: 0.35rem 1.5rem;
+}
+
+.addon-grid article {
+  min-width: 0;
+  padding-top: 0.85rem;
+  border-top: 1px solid var(--line);
+}
+
+.addon-grid h3 {
+  margin: 0;
+  font-size: 1.45rem;
+}
+
+.addon-price {
+  margin: 0.2rem 0 0;
+  font-size: 1.35rem;
+  font-weight: 650;
+  line-height: 1.2;
+}
+
+.addon-grid p,
+.addon-callout p {
+  margin: 0.4rem 0 0;
+}
+
+.addon-eligibility,
+.addon-annual-note {
+  margin-top: 0.55rem;
+  color: var(--ink);
+  font-weight: 650;
+}
+
+.addon-callout + .actions,
+#plans .actions,
+.faq-list + .actions,
+.faq-close {
+  margin-top: 1.25rem;
+}
+
+.detail-grid .plan-fit-price {
+  margin: 0.15rem 0 0.85rem;
+  font-weight: 650;
+}
+
+.faq-list {
+  display: grid;
+  gap: 0.7rem;
+  width: min(46rem, 100%);
+}
+
+.faq-page .faq-list {
+  width: 100%;
+}
+
+.faq-category {
+  margin-top: 2.15rem;
+}
+
+.faq-category h2 {
+  margin-bottom: 0.75rem;
+  font-size: clamp(1.55rem, 2.4vw, 2rem);
+}
+
+.faq-item {
+  min-width: 0;
+  background: var(--paper);
+  border: 1px solid var(--line);
+}
+
+.faq-item h3 {
+  margin: 0;
+  font-size: 1.2rem;
+  line-height: 1.3;
+}
+
+.faq-trigger {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.9rem;
+  width: 100%;
+  min-height: 48px;
+  padding: 0.9rem 1rem;
+  border: 0;
+  background: transparent;
+  color: var(--ink);
+  font-family: var(--font-display), Georgia, "Times New Roman", serif;
+  font-size: inherit;
+  font-weight: 600;
+  letter-spacing: -0.012em;
+  line-height: 1.3;
+  text-align: left;
+  cursor: pointer;
+}
+
+.faq-trigger:focus-visible {
+  outline: 2px solid var(--rose-deep);
+  outline-offset: -3px;
+}
+
+.faq-mark {
+  flex: none;
+  color: var(--rose-deep);
+  font-family: var(--font-body), "Segoe UI", sans-serif;
+  font-size: 1.35rem;
+  line-height: 1;
+}
+
+.faq-panel {
+  padding: 0 1rem 1rem;
+}
+
+.faq-panel p {
+  margin: 0 0 0.75rem;
+}
+
+.faq-panel p:last-child {
+  margin-bottom: 0;
+}
+
+.compare-value span {
+  overflow-wrap: anywhere;
+}
+
+@media (min-width: 800px) {
+  .addon-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .addon-grid article {
+    padding-top: 0;
+    border-top: 0;
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;
