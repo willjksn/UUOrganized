@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { legalLinks, signupHref } from "@/lib/app-links";
+import { legalLinks } from "@/lib/app-links";
 import { getCatalog, publicSocials } from "@/lib/catalog";
 import { footerPages } from "@/lib/nav";
 import { site } from "@/lib/site";
@@ -32,9 +32,6 @@ export async function Footer() {
                   <Link href={page.href}>{page.label}</Link>
                 </li>
               ))}
-              <li>
-                <a href={signupHref("free")} data-cta="start-free">Start Free</a>
-              </li>
             </ul>
           </nav>
           <nav aria-label="Legal">
@@ -88,6 +85,7 @@ export async function Footer() {
         </div>
       </div>
       <div className="wrap footer-fine">
+        <p>Unhinged. Unfiltered. Organized. | Books, practical tools &amp; the UUO Command Center | uuorganized.com</p>
         <p>© {new Date().getFullYear()} {site.name}</p>
       </div>
     </footer>

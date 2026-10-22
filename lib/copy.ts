@@ -1,4 +1,3 @@
-import { signupHref } from "./app-links";
 import { site } from "./site";
 
 export type SiteCopy = {
@@ -69,15 +68,15 @@ export function defaultCopy(): SiteCopy {
     description: site.description,
     promoMessage: "",
     promoCode: "",
-    homeEyebrow: "Unhinged. Unfiltered. Organized.",
-    homeHeadline: "Everything living in your head,",
-    homeHeadlineEm: "finally in one place.",
+    homeEyebrow: "Real. Ready. Slightly unhinged.",
+    homeHeadline: "Practical systems for the stuff nobody tells you about.",
+    homeHeadlineEm: "",
     homeLede:
-      "Appointments. Medications. Supplies. Insurance calls. Reference numbers. Follow-ups. Family updates. The things you're waiting on. UUO Command Center helps you keep track of it all, with AI helping organize the chaos.",
-    homePrimaryCta: "Start Free",
-    homePrimaryHref: signupHref("free"),
-    homeSecondaryCta: "Explore the UUO Command Center",
-    homeSecondaryHref: "/command-center",
+      "When life suddenly puts you in charge of medications, appointments, paperwork, and everything in between, you need a way to keep track of it all. Start with the caregiver guides and practical tools built from real experience.",
+    homePrimaryCta: "Explore the Books & Tools",
+    homePrimaryHref: "/shop",
+    homeSecondaryCta: "Get the Free 48-Hour Checklist",
+    homeSecondaryHref: "/#checklist",
     heroImage: "/images/book-cover.jpg",
     heroImageAlt: "Book cover of Who the Hell Put Me in Charge?! by Stormi J.",
     heroCaption: "Who the Hell Put Me in Charge?! · Stormi J.",
@@ -102,7 +101,7 @@ export function defaultCopy(): SiteCopy {
     checklistBody:
       "The one-page checklist for the day someone comes home and the house is not ready. Write it down. Handle one damn thing at a time.",
     checklistButton: "Send me the checklist",
-    checklistNote: "New printables and the occasional discount go to this list first.",
+    checklistNote: "The checklist comes to this email. Notes about new printables are a separate, optional choice.",
     checklistImage: "/images/checklist-teaser.jpg",
     checklistImageAlt: "Top of the First 48 Hours Home checklist: Don’t forget this shit.",
     checklistWidth: 796,
@@ -195,19 +194,21 @@ export function fillCopy(value: unknown): SiteCopy {
 const legacyDescriptions = new Set([
   "Practical systems for the shit nobody tells you about. The book, printables, and tools by Stormi J.",
   "Practical systems for the shit nobody tells you about. The book, printables, and Caregiver Command Center by Stormi J.",
+  "Practical systems for the shit nobody tells you about. The book, printables, and UU Organized app by Stormi J.",
 ]);
 
 export function withPublicHome(copy: SiteCopy): SiteCopy {
   const defaults = defaultCopy();
-  const legacyHero =
-    copy.homeHeadline === "Real. Ready." &&
-    copy.homePrimaryCta === "Shop the Tools" &&
-    copy.homePrimaryHref.replace(/\/$/, "") === "/shop";
   const description = legacyDescriptions.has(copy.description) ? defaults.description : copy.description;
-  if (!legacyHero) return { ...copy, description };
+  const staleHero =
+    copy.homePrimaryCta === "Start Free" ||
+    copy.homePrimaryHref.includes("app.uuorganized.com/signup") ||
+    (copy.homeHeadline === "Real. Ready." && copy.homePrimaryHref.replace(/\/$/, "") === "/shop");
+  if (!staleHero) return { ...copy, description };
   return {
     ...copy,
     description,
+    homeEyebrow: defaults.homeEyebrow,
     homeHeadline: defaults.homeHeadline,
     homeHeadlineEm: defaults.homeHeadlineEm,
     homeLede: defaults.homeLede,

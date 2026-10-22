@@ -2,19 +2,19 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { Brush } from "@/components/Brush";
 import { Picture } from "@/components/Picture";
-import { signupHref } from "@/lib/app-links";
+import { WaitlistForm } from "@/components/WaitlistForm";
 import { getPricingView } from "@/lib/pricing-view";
 import { site } from "@/lib/site";
 
 const description =
-  "The UU Organized app keeps today, medications, supplies, calls, documents, and the people helping in one place. The book teaches the system. The app helps you run it.";
+  "The UUO Command Center, by Unhinged. Unfiltered. Organized., is in private testing. Join the waitlist for updates. The book teaches the system.";
 
 export const metadata: Metadata = {
-  title: "The UU Organized App",
+  title: "UUO Command Center",
   description,
   alternates: { canonical: "/command-center" },
   openGraph: {
-    title: "The UU Organized App",
+    title: "UUO Command Center",
     description,
     url: "/command-center",
     type: "website",
@@ -62,7 +62,7 @@ const chapters = [
     eyebrow: "Keep medications organized",
     title: "The list, the label, and what you wrote down.",
     intro:
-      "UU Organized stores the medication information you enter. It does not diagnose, change a dose, or decide what someone should take. You review every field before it is saved.",
+      "The UUO Command Center stores the medication information you enter. It does not diagnose, change a dose, or decide what someone should take. You review every field before it is saved.",
     items: [
       {
         title: "The medication list",
@@ -301,7 +301,7 @@ export default async function CommandCenterPage() {
   const jsonLd = {
     "@context": "https://schema.org",
     "@type": "WebPage",
-    name: "The UU Organized App",
+    name: "UUO Command Center",
     url: `${site.url}/command-center`,
     description,
     isPartOf: { "@type": "WebSite", name: site.name, url: site.url },
@@ -313,23 +313,20 @@ export default async function CommandCenterPage() {
       <section className="section">
         <div className="wrap narrow">
           <p className="eyebrow">The UUO Command Center</p>
-          <h1>One place for the care you are already holding.</h1>
+          <h1>The UUO Command Center is coming.</h1>
           <Brush />
+          <p className="brand-by">by Unhinged. Unfiltered. Organized.</p>
           <p className="lede">
-            Appointments. Medications. Supplies. Insurance calls. Reference numbers. Follow-ups. Family
-            updates. The things you are waiting on.
+            We are testing a digital space for schedules, medications, follow-ups, documents, and help
+            from family. Public signup is not open.
           </p>
-          <p>
-            UU Organized helps you keep track of it all, with AI helping organize the chaos. You decide
-            what goes in. You review it before it is saved.
-          </p>
-          <p className="book-line">The book teaches the system. The app helps you run it.</p>
+          <p className="prelaunch-note">App in private testing; features and availability may change.</p>
           <div className="actions">
-            <a className="button" href={signupHref("free")} data-cta="start-free">
-              Start Free
-            </a>
+            <Link className="button" href="#waitlist" data-cta="join-waitlist">
+              Join the Command Center Waitlist
+            </Link>
             <Link className="button button-ghost" href="/pricing" data-cta="see-pricing">
-              See pricing
+              See planned pricing
             </Link>
           </div>
         </div>
@@ -360,7 +357,8 @@ export default async function CommandCenterPage() {
           <div className="section-head">
             <p className="eyebrow">How the plans fit</p>
             <h2 id="plans-heading">Start with one person. Make room when the list grows.</h2>
-            <p className="lede">Invite the people helping you care.</p>
+            <p className="lede">These plans describe private testing. They are not open for public purchase.</p>
+            <p>Invite the people helping you care.</p>
             <p>
               The Workspace Owner manages the subscription. Invited caregivers, helpers, admins, and viewers do
               not purchase a separate plan. Who&apos;s got this? is on every plan. Caregiver Family is the larger
@@ -395,12 +393,12 @@ export default async function CommandCenterPage() {
             <p className="addon-annual-note">{pricing.annualMessage}.</p>
           </aside>
           <div className="actions">
-            <Link className="button" href="/pricing" data-cta="see-pricing">
+            <Link className="button" href="#waitlist" data-cta="join-waitlist">
+              Join the Command Center Waitlist
+            </Link>
+            <Link className="button button-ghost" href="/pricing" data-cta="see-pricing">
               Compare plans
             </Link>
-            <a className="button button-ghost" href={signupHref("free")} data-cta="start-free">
-              Start Free
-            </a>
             <Link className="button button-ghost" href="/faq">
               See the FAQ
             </Link>
@@ -420,21 +418,35 @@ export default async function CommandCenterPage() {
           </figure>
           <div>
             <p className="eyebrow">The book and the app</p>
-            <h2 id="book-heading">The book teaches the system. The app helps you run it.</h2>
+            <h2 id="book-heading">The book teaches the system.</h2>
             <p>
-              <em>Who the Hell Put Me in Charge?!</em> stays a book you can buy on its own. The UU Organized
-              app is the digital tool inspired by that caregiving system. You do not need the app to use
-              the book, and you do not need the book to start the app.
+              <em>Who the Hell Put Me in Charge?!</em> stays a book you can buy on its own. The UUO Command
+              Center, by Unhinged. Unfiltered. Organized., is the digital tool in private testing. You do
+              not need the app to use the book.
             </p>
             <div className="actions">
               <Link className="button button-ghost" href="/shop#book">
                 Shop the book
               </Link>
-              <a className="button" href={signupHref("free")} data-cta="start-free">
-                Try the app free
-              </a>
+              <Link className="button" href="#waitlist" data-cta="join-waitlist">
+                Join the Command Center Waitlist
+              </Link>
             </div>
           </div>
+        </div>
+      </section>
+
+      <section className="section band" id="waitlist" aria-labelledby="waitlist-heading">
+        <div className="wrap command-home">
+          <div>
+            <p className="eyebrow">Waitlist</p>
+            <h2 id="waitlist-heading">Join the Command Center Waitlist.</h2>
+            <p>
+              Email only. We’ll write when there is something to try, or when the public opening is real.
+            </p>
+            <p className="prelaunch-note">App in private testing; features and availability may change.</p>
+          </div>
+          <WaitlistForm />
         </div>
       </section>
     </>

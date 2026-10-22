@@ -1,5 +1,5 @@
 import { resubscribeLink } from "./audience";
-import { checklistFile } from "./records";
+import { checklistFile, remoteSideEffectsAllowed } from "./records";
 import { site } from "./site";
 
 export function resendReady() {
@@ -7,6 +7,7 @@ export function resendReady() {
 }
 
 async function send(payload: Record<string, unknown>) {
+  if (!remoteSideEffectsAllowed()) return false;
   const key = process.env.RESEND_API_KEY;
   if (!key) return false;
 

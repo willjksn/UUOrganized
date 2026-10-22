@@ -73,7 +73,12 @@ export default async function ShopPage({
               <h2>{feature.name}</h2>
               <p>{feature.details || feature.summary}</p>
               <p className="price">{feature.priceLabel}</p>
-              <p className="fine">By {site.author}</p>
+              <p className="fine">By {site.author}. From Unhinged. Unfiltered. Organized.</p>
+              {feature.slug === "book" ? (
+                <p className="fine pending-note">
+                  A profanity-free edition is not for sale yet. This listing is the published edition only.
+                </p>
+              ) : null}
               <ProductAction product={feature} />
               {feature.slug === "book" ? <BookToApp /> : null}
             </div>

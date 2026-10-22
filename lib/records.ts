@@ -3,13 +3,21 @@ import { mkdir, appendFile, readFile } from "fs/promises";
 import path from "path";
 
 export type SignupRecord = {
-  type: "checklist" | "contact" | "download" | "purchase";
+  type: "checklist" | "contact" | "download" | "purchase" | "waitlist" | "professional";
   email: string;
   name?: string;
   message?: string;
   product?: string;
+  organization?: string;
+  role?: string;
+  category?: string;
+  marketingConsent?: boolean;
   createdAt: string;
 };
+
+export function remoteSideEffectsAllowed() {
+  return process.env.VERCEL_ENV !== "preview";
+}
 
 const secret = () => process.env.DOWNLOAD_SECRET || "uuo-checklist-link";
 
@@ -46,7 +54,7 @@ export function validToken(token: string | null, subject = "") {
 export async function saveRecord(record: SignupRecord) {
   let saved = false;
 
-  if (process.env.BLOB_READ_WRITE_TOKEN) {
+  if (process.env.BLOB_READ_WRITE_TOKEN && remoteSideEffectsAllowed()) {
     try {
       const { put } = await import("@vercel/blob");
       await put(`signups/${record.createdAt}-${randomUUID()}.json`, JSON.stringify(record), {
@@ -73,4 +81,53 @@ export async function saveRecord(record: SignupRecord) {
   }
 
   return saved;
+}
+
+export async function hasSignup(type: SignupRecord["type"], email: string) {
+  const target = email.trim().toLowerCase();
+  if (!target) return false;
+
+  const matches = (row: { type?: string; email?: string }) =>
+    row.type === type && typeof row.email === "string" && row.email.trim().toLowerCase() === target;
+
+  try {
+    const text = await readFile(path.join(process.cwd(), "data", "signups.ndjson"), "utf8");
+    for (const line of text.split("\n")) {
+      if (!line.trim()) continue;
+      try {
+        if (matches(JSON.parse(line) as { type?: string; email?: string })) return true;
+      } catch {
+        // Skip a broken line.
+      }
+    }
+  } catch {
+    // No local signup file.
+  }
+
+  if (!process.env.BLOB_READ_WRITE_TOKEN || !remoteSideEffectsAllowed()) return false;
+
+  try {
+    const { get, list } = await import("@vercel/blob");
+    const blobs = await list({ prefix: "signups/", limit: 1000 });
+    for (const blob of blobs.blobs) {
+      const result = await get(blob.pathname, { access: "private", useCache: false });
+      if (!result || result.statusCode !== 200 || !result.stream) continue;
+      const reader = result.stream.getReader();
+      const chunks: Uint8Array[] = [];
+      while (true) {
+        const { done, value } = await reader.read();
+        if (done) break;
+        if (value) chunks.push(value);
+      }
+      try {
+        if (matches(JSON.parse(Buffer.concat(chunks).toString("utf8")) as { type?: string; email?: string })) return true;
+      } catch {
+        // Skip a broken record.
+      }
+    }
+  } catch {
+    // A missed duplicate is reported again rather than blocking the signup.
+  }
+
+  return false;
 }
