@@ -3,6 +3,7 @@ import { ActionLink } from "@/components/ActionLink";
 import { BookToApp } from "@/components/BookToApp";
 import { Brush } from "@/components/Brush";
 import { Paragraphs } from "@/components/Paragraphs";
+import { CleanEdition } from "@/components/CleanEdition";
 import { ProductAction } from "@/components/ProductAction";
 import { ProductCard } from "@/components/ProductCard";
 import { Picture } from "@/components/Picture";
@@ -74,12 +75,8 @@ export default async function ShopPage({
               <p>{feature.details || feature.summary}</p>
               <p className="price">{feature.priceLabel}</p>
               <p className="fine">By {site.author}. From Unhinged. Unfiltered. Organized.</p>
-              {feature.slug === "book" ? (
-                <p className="fine pending-note">
-                  A profanity-free edition is not for sale yet. This listing is the published edition only.
-                </p>
-              ) : null}
               <ProductAction product={feature} />
+              {feature.slug === "book" ? <CleanEdition /> : null}
               {feature.slug === "book" ? <BookToApp /> : null}
             </div>
           </article>

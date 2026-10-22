@@ -33,8 +33,8 @@ export default function ProfessionalsPage() {
             an enterprise product. There is no provider integration to turn on.
           </p>
           <p>
-            Tell us what you need for your program. Do not include patient names, medication lists, or
-            health records.
+            The guide comes in the original edition and a profanity-free edition. Tell us which one you
+            need. Do not include patient names, medication lists, or health records.
           </p>
           <p>
             Or email <a href={`mailto:${site.email}`}>{site.email}</a>.

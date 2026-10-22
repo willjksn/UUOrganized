@@ -4,6 +4,7 @@ import { BlogCard } from "@/components/BlogCard";
 import { EmailSignup } from "@/components/EmailSignup";
 import { Picture } from "@/components/Picture";
 import { Portrait } from "@/components/Portrait";
+import { CleanEdition } from "@/components/CleanEdition";
 import { ProductCard } from "@/components/ProductCard";
 import { WaitlistForm } from "@/components/WaitlistForm";
 import { getCatalog } from "@/lib/catalog";
@@ -94,7 +95,8 @@ export default async function HomePage() {
             <h2 id="tools-heading">Start with the book. Keep going with the tools.</h2>
             <p className="lede">
               <em>Who the Hell Put Me in Charge?!</em> is the caregiver guide, from Unhinged. Unfiltered.
-              Organized. The printables pick up the daily list.
+              Organized. It comes in the original edition and a profanity-free edition. The printables pick
+              up the daily list.
             </p>
           </div>
           <div className="product-grid">
@@ -102,10 +104,7 @@ export default async function HomePage() {
               <ProductCard key={product.slug} product={product} />
             ))}
           </div>
-          <p className="fine pending-note">
-            A profanity-free edition is not for sale yet. It will show up here when there is a real cover
-            and a place to buy it.
-          </p>
+          <CleanEdition />
         </div>
       </section>
 

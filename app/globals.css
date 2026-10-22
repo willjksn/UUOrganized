@@ -2568,6 +2568,25 @@ section.hero {
   font-size: 0.95rem;
 }
 
+.clean-edition {
+  margin: 1.4rem 0 0;
+  max-width: 280px;
+}
+
+.clean-edition img {
+  width: 100%;
+  height: auto;
+  box-shadow: var(--shadow);
+}
+
+.clean-edition figcaption {
+  display: grid;
+  gap: 0.35rem;
+  margin-top: 0.75rem;
+  color: var(--muted);
+  font-size: 0.95rem;
+}
+
 .consent {
   display: flex;
   gap: 0.75rem;
