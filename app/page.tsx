@@ -1,10 +1,10 @@
 import { ActionLink } from "@/components/ActionLink";
+import { Brush } from "@/components/Brush";
 import { FaqList } from "@/components/FaqList";
 import { BlogCard } from "@/components/BlogCard";
 import { EmailSignup } from "@/components/EmailSignup";
 import { Picture } from "@/components/Picture";
 import { Portrait } from "@/components/Portrait";
-import { CleanEdition } from "@/components/CleanEdition";
 import { ProductCard } from "@/components/ProductCard";
 import { WaitlistForm } from "@/components/WaitlistForm";
 import { getCatalog } from "@/lib/catalog";
@@ -63,23 +63,49 @@ export default async function HomePage() {
               </ActionLink>
             </div>
           </div>
-          <figure className="hero-cover">
-            <Picture
-              src={book?.image || "/images/book-cover.jpg"}
-              alt={book?.imageAlt || "Book cover of Who the Hell Put Me in Charge?! by Stormi J."}
-              width={book?.width || 1000}
-              height={book?.height || 1250}
-              priority
-              sizes="(max-width: 900px) 80vw, 440px"
-            />
-            <figcaption>Who the Hell Put Me in Charge?! · Stormi J.</figcaption>
-          </figure>
+          <div className="hero-covers">
+            <figure className="hero-cover">
+              <Picture
+                src={book?.image || "/images/book-cover.jpg"}
+                alt={book?.imageAlt || "Book cover of Who the Hell Put Me in Charge?! by Stormi J."}
+                width={book?.width || 1000}
+                height={book?.height || 1250}
+                priority
+                sizes="(max-width: 900px) 42vw, 240px"
+              />
+              <figcaption>Original edition</figcaption>
+            </figure>
+            <figure className="hero-cover">
+              <Picture
+                src="/images/book-clean.png"
+                alt="Profanity-free edition cover of Who the Hell Put Me in Charge?! by Stormi J. It reads Profanity-Free Edition."
+                width={811}
+                height={1024}
+                priority
+                sizes="(max-width: 900px) 42vw, 240px"
+              />
+              <figcaption>
+                Profanity-Free Edition
+                <span>Purchase link not connected yet.</span>
+              </figcaption>
+            </figure>
+          </div>
         </div>
       </section>
 
+      <div className="band-rule">
+        <ul className="wrap principles">
+          {copy.principles.map((word, index) => (
+            <li key={`${word}-${index}`}>{word}</li>
+          ))}
+        </ul>
+      </div>
+
       <section className="section problem" aria-labelledby="problem-heading">
-        <div className="wrap narrow">
+        <div className="wrap narrow problem-copy">
+          <p className="eyebrow">The real-life part</p>
           <h2 id="problem-heading">Nobody gave you the damn manual.</h2>
+          <Brush />
           <p className="editorial">
             One minute you are living your life. The next you are keeping up with doctors, medication
             changes, insurance calls, equipment, and a hundred details you cannot afford to forget. UUO
@@ -104,7 +130,6 @@ export default async function HomePage() {
               <ProductCard key={product.slug} product={product} />
             ))}
           </div>
-          <CleanEdition />
         </div>
       </section>
 

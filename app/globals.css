@@ -1883,6 +1883,24 @@ section.hero {
   width: min(100%, 400px);
 }
 
+.hero-covers {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.85rem 1rem;
+  align-items: start;
+}
+
+.hero-covers .hero-cover img {
+  width: 100%;
+}
+
+.hero-covers .hero-cover figcaption {
+  display: grid;
+  gap: 0.3rem;
+  padding-left: 0;
+  text-align: center;
+}
+
 .hero .lede,
 .hero-support,
 .narrow-prose .lede {
@@ -2540,16 +2558,31 @@ section.hero {
 }
 
 .editorial {
-  max-width: 40rem;
+  max-width: 34rem;
   margin: 0;
   font-family: var(--font-display), Georgia, "Times New Roman", serif;
-  font-size: clamp(1.45rem, 2.6vw, 2rem);
+  font-size: clamp(1.35rem, 2.2vw, 1.7rem);
   font-weight: 500;
-  line-height: 1.4;
+  line-height: 1.45;
 }
 
 .problem {
-  background: var(--paper);
+  background:
+    radial-gradient(ellipse at 8% 0%, var(--blush) 0%, transparent 42%),
+    var(--paper);
+}
+
+.problem h2 {
+  max-width: 8.7em;
+  margin-bottom: 0.35rem;
+  font-size: clamp(2.35rem, 5.2vw, 4.2rem);
+  line-height: 1.02;
+  text-wrap: wrap;
+}
+
+.problem .brush {
+  width: 9.5rem;
+  margin-top: 0.15rem;
 }
 
 .brand-by,
