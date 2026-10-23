@@ -6,7 +6,7 @@ import { getPricingView } from "@/lib/pricing-view";
 import { site } from "@/lib/site";
 
 const description =
-  "Free, Caregiver, and Caregiver Family plans for the UU Organized app, plus optional add-ons. Start free, or choose monthly or annual billing in the app.";
+  "Planned Free, Caregiver, and Caregiver Family pricing for the UUO Command Center, plus optional add-ons. Public signup is not open.";
 
 export const metadata: Metadata = {
   title: "Pricing",
@@ -38,11 +38,16 @@ export default async function PricingPage() {
         <div className="wrap">
           <div className="section-head">
             <p className="eyebrow">Pricing</p>
-            <h1>Start free. Make room when the list gets bigger.</h1>
+            <h1>Planned pricing for the UUO Command Center.</h1>
             <Brush />
+            <p className="brand-by">by Unhinged. Unfiltered. Organized.</p>
             <p className="lede">
               Free is for getting one person you care for organized. Caregiver is for the person managing
               the care. Caregiver Family is for the people managing it together.
+            </p>
+            <p className="prelaunch-note">
+              These prices describe private testing. Public signup and checkout are not open. Nothing on
+              this page charges a card.
             </p>
             <p className="book-line">Invite the people helping you care.</p>
             <p>
@@ -50,13 +55,12 @@ export default async function PricingPage() {
               do not purchase a separate plan.
             </p>
             <p>
-              Choosing a plan opens the app so you can sign up. Paid plans continue to checkout there, after
-              you have an account. This page does not charge a card. The book and printables stay in the{" "}
-              <Link href="/shop">shop</Link>.
+              The book and printables stay in the <Link href="/shop">shop</Link>. Joining the waitlist does
+              not start a subscription.
             </p>
           </div>
           <PricingBoard
-            plans={pricing.plans}
+            plans={pricing.plans.map((plan) => ({ ...plan, monthlyHref: "", annualHref: "" }))}
             groups={pricing.groups}
             addons={pricing.addons}
             annualMessage={pricing.annualMessage}

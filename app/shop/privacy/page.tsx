@@ -36,17 +36,23 @@ export default function ShopPrivacyPage() {
           <article className="privacy-card privacy-wide">
             <h2>Email for free files</h2>
             <p>
-              If you ask for a free file, including the First 48 Hours checklist, I keep your email so I
-              can send that file and, later, notes about new tools and the occasional discount. The file
-              downloads in your browser after you sign up. When email delivery is connected, a copy also
-              goes to your inbox.
+              If you ask for a free file, including the First 48 Hours checklist, I use your email to send
+              that file. The file downloads in your browser. When email delivery is connected, a copy also
+              goes to your inbox. Notes about new tools are separate. Those go only if you check the
+              optional box. That box is not prechecked.
             </p>
           </article>
           <article className="privacy-card">
             <h2>Contact messages</h2>
             <p>
               If you use the contact form, I keep your name, email, and message so I can reply. That’s
-              the only use.
+              the only use. A professional book inquiry also keeps the organization, role, and request
+              type so I can answer. Don’t send patient names, medication lists, or health records.
+            </p>
+            <p>
+              If you join the UUO Command Center waitlist, I keep that email for product updates and
+              possible early testing. It is not added to notes about printables unless you check that
+              optional box.
             </p>
           </article>
           <article className="privacy-card">
@@ -76,9 +82,11 @@ export default function ShopPrivacyPage() {
           <article className="privacy-card privacy-wide">
             <h2>Notes I send</h2>
             <p>
-              If you ask for a free file or buy something here, I keep your email so I can send what you asked for
-              and, later, a note about something new. Those notes include a link to leave the list. You can also
-              email <a href={`mailto:${site.privacyEmail}`}>{site.privacyEmail}</a> and say delete.
+              If you ask for a free file or buy something here, I keep your email so I can send what you asked for.
+              Later notes about something new go to people who opted in, and to buyers. Those notes include a
+              link to leave the list. You can also
+              email <a href={`mailto:${site.privacyEmail}`}>{site.privacyEmail}</a> and say delete. The same
+              address takes you off the Command Center waitlist.
             </p>
           </article>
           <article className="privacy-card">

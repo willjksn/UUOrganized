@@ -3,7 +3,7 @@ import { publishedPosts, readPosts } from "@/lib/posts";
 import { site } from "@/lib/site";
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
-  const paths = ["", "/command-center", "/shop", "/shop/privacy", "/about", "/blog", "/pricing", "/faq", "/contact"];
+  const paths = ["", "/command-center", "/shop", "/shop/privacy", "/about", "/blog", "/pricing", "/faq", "/for-professionals", "/contact"];
   const now = new Date();
   const posts = publishedPosts(await readPosts());
 

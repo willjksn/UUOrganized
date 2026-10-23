@@ -11,5 +11,6 @@ export const footerPages = [
   ...publicNav.filter((page) => page.href !== "/contact"),
   { href: "/pricing", label: "Pricing" },
   { href: "/faq", label: "FAQ" },
+  { href: "/for-professionals", label: "For Professionals" },
   { href: "/contact", label: "Contact" },
 ] as const;

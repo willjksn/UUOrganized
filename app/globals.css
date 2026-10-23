@@ -1054,7 +1054,8 @@ video.blog-hero {
 }
 
 input,
-textarea {
+textarea,
+select {
   width: 100%;
   padding: 0.75rem 0.8rem;
   border: 1px solid #d9cfc6;
@@ -1723,16 +1724,6 @@ code {
   }
 }
 
-@media (max-width: 859px) {
-  .brand-name {
-    position: absolute;
-    width: 1px;
-    height: 1px;
-    overflow: hidden;
-    clip: rect(0 0 0 0);
-  }
-}
-
 @media (max-width: 979px) {
   .nav {
     display: none;
@@ -1890,6 +1881,24 @@ section.hero {
 
 .hero-cover img {
   width: min(100%, 400px);
+}
+
+.hero-covers {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.85rem 1rem;
+  align-items: start;
+}
+
+.hero-covers .hero-cover img {
+  width: 100%;
+}
+
+.hero-covers .hero-cover figcaption {
+  display: grid;
+  gap: 0.3rem;
+  padding-left: 0;
+  text-align: center;
 }
 
 .hero .lede,
@@ -2545,6 +2554,96 @@ section.hero {
   .addon-grid article {
     padding-top: 0;
     border-top: 0;
+  }
+}
+
+.editorial {
+  max-width: 34rem;
+  margin: 0;
+  font-family: var(--font-display), Georgia, "Times New Roman", serif;
+  font-size: clamp(1.35rem, 2.2vw, 1.7rem);
+  font-weight: 500;
+  line-height: 1.45;
+}
+
+.problem {
+  background:
+    radial-gradient(ellipse at 8% 0%, var(--blush) 0%, transparent 42%),
+    var(--paper);
+}
+
+.problem h2 {
+  max-width: 8.7em;
+  margin-bottom: 0.35rem;
+  font-size: clamp(2.35rem, 5.2vw, 4.2rem);
+  line-height: 1.02;
+  text-wrap: wrap;
+}
+
+.problem .brush {
+  width: 9.5rem;
+  margin-top: 0.15rem;
+}
+
+.brand-by,
+.prelaunch-note,
+.pending-note {
+  color: var(--muted);
+}
+
+.brand-by {
+  margin: 0 0 0.8rem;
+  font-size: 1rem;
+}
+
+.prelaunch-note,
+.pending-note {
+  font-size: 0.95rem;
+}
+
+.clean-edition {
+  margin: 1.4rem 0 0;
+  max-width: 280px;
+}
+
+.clean-edition img {
+  width: 100%;
+  height: auto;
+  box-shadow: var(--shadow);
+}
+
+.clean-edition figcaption {
+  display: grid;
+  gap: 0.35rem;
+  margin-top: 0.75rem;
+  color: var(--muted);
+  font-size: 0.95rem;
+}
+
+.consent {
+  display: flex;
+  gap: 0.75rem;
+  align-items: flex-start;
+  font-size: 0.95rem;
+}
+
+.consent input {
+  width: 1.1rem;
+  height: 1.1rem;
+  margin-top: 0.28rem;
+  accent-color: var(--rose-deep);
+}
+
+.command-home {
+  display: grid;
+  gap: 1.5rem;
+  align-items: start;
+}
+
+@media (min-width: 860px) {
+  .command-home {
+    grid-template-columns: 1.1fr 0.9fr;
+    gap: 3rem;
   }
 }
 

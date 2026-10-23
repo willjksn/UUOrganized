@@ -2,6 +2,7 @@ import { createHmac, timingSafeEqual } from "crypto";
 import { mkdir, readFile, writeFile } from "fs/promises";
 import path from "path";
 import { cleanEmail } from "./http";
+import { remoteSideEffectsAllowed } from "./records";
 
 export type PersonSource = "checklist" | "download" | "purchase" | "added";
 
@@ -58,7 +59,7 @@ function asPerson(value: unknown): Person | null {
   return {
     email,
     name: typeof raw.name === "string" ? raw.name.slice(0, 120) : "",
-    source: source === "checklist" || source === "download" || source === "purchase" || source === "added" ? source : "added",
+    source: knownSource(source),
     createdAt: typeof raw.createdAt === "string" ? raw.createdAt : new Date().toISOString(),
     unsubscribed: Boolean(raw.unsubscribed),
   };
@@ -82,6 +83,20 @@ async function readStored(): Promise<Person[]> {
   } catch {
     return [];
   }
+}
+
+function knownSource(source: unknown): PersonSource {
+  if (source === "checklist" || source === "download" || source === "purchase" || source === "added") return source;
+  return "added";
+}
+
+export function sourceFromSignup(row: { type?: string; marketingConsent?: boolean }): PersonSource | null {
+  if (row.type === "purchase") return "purchase";
+  if (row.type === "download") return "download";
+  if (row.type === "contact" || row.type === "professional") return null;
+  if (row.type === "waitlist") return row.marketingConsent === true ? "checklist" : null;
+  if (row.type === "checklist") return row.marketingConsent === false ? null : "checklist";
+  return null;
 }
 
 function parsePeople(text: string) {
@@ -117,7 +132,7 @@ async function writeAudience(people: Person[]) {
     // Vercel’s filesystem is read-only.
   }
 
-  if (process.env.BLOB_READ_WRITE_TOKEN) {
+  if (process.env.BLOB_READ_WRITE_TOKEN && remoteSideEffectsAllowed()) {
     try {
       const { put } = await import("@vercel/blob");
       await put("site/audience.json", body, {
@@ -156,10 +171,11 @@ async function harvest(): Promise<Person[]> {
     for (const line of text.split("\n")) {
       if (!line.trim()) continue;
       try {
-        const row = JSON.parse(line) as { type?: string; email?: string; name?: string; createdAt?: string };
+        const row = JSON.parse(line) as { type?: string; email?: string; name?: string; createdAt?: string; marketingConsent?: boolean };
         const email = cleanEmail(row.email);
         if (!email) continue;
-        const source: PersonSource = row.type === "purchase" ? "purchase" : row.type === "download" ? "download" : "checklist";
+        const source = sourceFromSignup(row);
+        if (!source) continue;
         found.push({
           email,
           name: row.name || "",
@@ -188,11 +204,12 @@ async function harvest(): Promise<Person[]> {
             email?: string;
             name?: string;
             createdAt?: string;
+            marketingConsent?: boolean;
           };
           const email = cleanEmail(row.email);
           if (!email) continue;
-          const source: PersonSource =
-            row.type === "purchase" ? "purchase" : row.type === "download" ? "download" : "checklist";
+          const source = sourceFromSignup(row);
+          if (!source) continue;
           found.push({
             email,
             name: row.name || "",

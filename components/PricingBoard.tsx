@@ -1,6 +1,7 @@
 "use client";
 
 import { useId, useState } from "react";
+import Link from "next/link";
 import type { AddonOffer, BillingInterval, PlanComparisonGroup, PlanOffer } from "@/lib/plans";
 import { addonPriceLabel, planPriceView, shortSavings } from "@/lib/plans";
 
@@ -58,7 +59,6 @@ export function PricingBoard({
       <div className="plan-grid" aria-live="polite">
         {plans.map((plan) => {
           const view = planPriceView(plan, billing);
-          const href = annual ? plan.annualHref : plan.monthlyHref;
           const priceLabel = [view.amount, view.period, view.yearly].filter(Boolean).join(", ");
           return (
             <article
@@ -66,7 +66,7 @@ export function PricingBoard({
               className={plan.featured ? "plan-card plan-card-main" : "plan-card"}
               data-plan={plan.key}
               data-price={view.amount}
-              data-href={href}
+              data-href="/command-center#waitlist"
             >
               <p className="eyebrow">{plan.outcome}</p>
               <h2>{plan.name}</h2>
@@ -83,9 +83,14 @@ export function PricingBoard({
                   <li key={point}>{point}</li>
                 ))}
               </ul>
-              <a className="button" href={href} data-cta={plan.ctaId} aria-label={`${plan.cta}. ${priceLabel}`}>
-                {plan.cta}
-              </a>
+              <Link
+                className="button"
+                href="/command-center#waitlist"
+                data-cta="join-waitlist"
+                aria-label={`Join the Command Center Waitlist. ${plan.name}. ${priceLabel}`}
+              >
+                Join the Waitlist
+              </Link>
             </article>
           );
         })}

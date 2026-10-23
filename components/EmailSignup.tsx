@@ -27,6 +27,7 @@ export function EmailSignup({
         body: JSON.stringify({
           email: data.get("email"),
           company: data.get("company"),
+          updates: data.get("updates"),
         }),
       });
       const json = (await response.json().catch(() => ({}))) as { error?: string; emailed?: boolean };
@@ -85,6 +86,10 @@ export function EmailSignup({
           maxLength={254}
           placeholder="you@email.com"
         />
+      </label>
+      <label className="consent">
+        <input name="updates" type="checkbox" value="on" />
+        <span>Also send occasional notes about new printables and tools. Optional. Unchecked, you still get the checklist.</span>
       </label>
       {status === "error" ? (
         <p className="form-error" role="alert">

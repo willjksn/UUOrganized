@@ -1,27 +1,21 @@
 import { ActionLink } from "@/components/ActionLink";
+import { Brush } from "@/components/Brush";
 import { FaqList } from "@/components/FaqList";
 import { BlogCard } from "@/components/BlogCard";
-import { Brush } from "@/components/Brush";
 import { EmailSignup } from "@/components/EmailSignup";
-import { Paragraphs } from "@/components/Paragraphs";
 import { Picture } from "@/components/Picture";
 import { Portrait } from "@/components/Portrait";
-import { StoryBlurb } from "@/components/StoryBlurb";
 import { ProductCard } from "@/components/ProductCard";
+import { WaitlistForm } from "@/components/WaitlistForm";
 import { getCatalog } from "@/lib/catalog";
 import { withPublicHome } from "@/lib/copy";
 import { publishedPosts, readPosts } from "@/lib/posts";
-import { signupHref } from "@/lib/app-links";
 import { getPricingView } from "@/lib/pricing-view";
 import { site } from "@/lib/site";
 
 export default async function HomePage() {
   const [catalog, pricing] = await Promise.all([getCatalog(), getPricingView()]);
   const copy = withPublicHome(catalog.copy);
-  const supportAt = copy.homeLede.indexOf("UUO Command Center helps");
-  const heroLede = supportAt > 0
-    ? [copy.homeLede.slice(0, supportAt).trim(), copy.homeLede.slice(supportAt).trim()]
-    : [copy.homeLede];
   const featured = catalog.products.filter((product) => product.featured);
   const notes = publishedPosts(await readPosts());
   const notePreview = notes.slice(0, 3);
@@ -46,53 +40,56 @@ export default async function HomePage() {
       },
     ],
   };
+
   return (
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
       <section className="section hero">
         <div className="wrap hero-grid">
           <div>
-            <p className="eyebrow">{copy.homeEyebrow}</p>
-            <h1 className="display">
-              {copy.homeHeadline}
-              {copy.homeHeadlineEm ? (
-                <>
-                  <br />
-                  <em>{copy.homeHeadlineEm}</em>
-                </>
-              ) : null}
-            </h1>
-            <Brush />
-            {heroLede.map((paragraph, index) => (
-              <p className={index === 0 ? "lede" : "hero-support"} key={paragraph}>
-                {paragraph}
-              </p>
-            ))}
-            <div className="actions">
-              <ActionLink className="button" href={copy.homePrimaryHref} cta="start-free">
-                {copy.homePrimaryCta}
-              </ActionLink>
-              {copy.homeSecondaryCta ? (
-                <ActionLink className="button button-ghost" href={copy.homeSecondaryHref} cta="explore-command-center">
-                  {copy.homeSecondaryCta}
-                </ActionLink>
-              ) : null}
-            </div>
-            <p className="fine hero-next">
-              <ActionLink href="/shop#book">Shop the book</ActionLink>
+            <p className="eyebrow">Real. Ready. Slightly unhinged.</p>
+            <h1 className="display">Practical systems for the stuff nobody tells you about.</h1>
+            <p className="lede">
+              When life suddenly puts you in charge of medications, appointments, paperwork, and everything
+              in between, you need a way to keep track of it all. Start with the caregiver guides and
+              practical tools built from real experience.
             </p>
+            <div className="actions">
+              <ActionLink className="button" href="/shop" cta="explore-books">
+                Explore the Books &amp; Tools
+              </ActionLink>
+              <ActionLink className="button button-ghost" href="/#checklist" cta="get-checklist">
+                Get the Free 48-Hour Checklist
+              </ActionLink>
+            </div>
           </div>
-          <figure className="hero-cover">
-            <Picture
-              src={copy.heroImage}
-              alt={copy.heroImageAlt}
-              width={copy.heroWidth}
-              height={copy.heroHeight}
-              priority
-              sizes="(max-width: 900px) 80vw, 440px"
-            />
-            {copy.heroCaption ? <figcaption>{copy.heroCaption}</figcaption> : null}
-          </figure>
+          <div className="hero-covers">
+            <figure className="hero-cover">
+              <Picture
+                src={book?.image || "/images/book-cover.jpg"}
+                alt={book?.imageAlt || "Book cover of Who the Hell Put Me in Charge?! by Stormi J."}
+                width={book?.width || 1000}
+                height={book?.height || 1250}
+                priority
+                sizes="(max-width: 900px) 42vw, 240px"
+              />
+              <figcaption>Original edition</figcaption>
+            </figure>
+            <figure className="hero-cover">
+              <Picture
+                src="/images/book-clean.png"
+                alt="Profanity-free edition cover of Who the Hell Put Me in Charge?! by Stormi J. It reads Profanity-Free Edition."
+                width={811}
+                height={1024}
+                priority
+                sizes="(max-width: 900px) 42vw, 240px"
+              />
+              <figcaption>
+                Profanity-Free Edition
+                <span>Purchase link not connected yet.</span>
+              </figcaption>
+            </figure>
+          </div>
         </div>
       </section>
 
@@ -104,58 +101,29 @@ export default async function HomePage() {
         </ul>
       </div>
 
-      <section className="section band" aria-labelledby="command-home-heading">
-        <div className="wrap">
-          <div className="section-head">
-            <p className="eyebrow">The UUO Command Center</p>
-            <h2 id="command-home-heading">The book teaches the system. The app helps you run it.</h2>
-            <p className="lede">
-              Open the app when the list is still in your head: the dose, the appointment, the reference
-              number, and who is taking the next turn.
-            </p>
-          </div>
-          <div className="command-preview">
-            <article>
-              <h3>Today</h3>
-              <p>Medications, visits, follow-ups, and the things you are waiting on, gathered into the day you are in.</p>
-            </article>
-            <article>
-              <h3>Medications</h3>
-              <p>The schedule you enter, a photo of the label, and the refill note. You review it before it is saved.</p>
-            </article>
-            <article>
-              <h3>The calls</h3>
-              <p>Insurance, the pharmacy, the agency. The name, the number, and the reference number have a place.</p>
-            </article>
-            <article>
-              <h3>Supplies</h3>
-              <p>The things you cannot run out of, with the reorder link for the place you already buy them.</p>
-            </article>
-            <article>
-              <h3>The handoff</h3>
-              <p>What the next person actually needs when they take a shift, instead of another group text.</p>
-            </article>
-            <article>
-              <h3>Say it once</h3>
-              <p>Type it, say it, or photograph it. Ask UUO later about what is already written down.</p>
-            </article>
-          </div>
-          <div className="actions">
-            <a className="button" href={signupHref("free")} data-cta="start-free">
-              Start Free
-            </a>
-            <ActionLink className="button button-ghost" href="/command-center" cta="explore-command-center">
-              Explore the UUO Command Center
-            </ActionLink>
-          </div>
+      <section className="section problem" aria-labelledby="problem-heading">
+        <div className="wrap narrow problem-copy">
+          <p className="eyebrow">The real-life part</p>
+          <h2 id="problem-heading">Nobody gave you the damn manual.</h2>
+          <Brush />
+          <p className="editorial">
+            One minute you are living your life. The next you are keeping up with doctors, medication
+            changes, insurance calls, equipment, and a hundred details you cannot afford to forget. UUO
+            was built for that kind of real life.
+          </p>
         </div>
       </section>
 
-      <section className="section">
+      <section className="section" aria-labelledby="tools-heading">
         <div className="wrap">
           <div className="section-head">
-            <p className="eyebrow">{copy.toolsEyebrow}</p>
-            <h2>{copy.toolsHeading}</h2>
+            <p className="eyebrow">Available now</p>
+            <h2 id="tools-heading">Start with the book. Keep going with the tools.</h2>
+            <p className="lede">
+              <em>Who the Hell Put Me in Charge?!</em> is the caregiver guide, from Unhinged. Unfiltered.
+              Organized. It comes in the original edition and a profanity-free edition. The printables pick
+              up the daily list.
+            </p>
           </div>
           <div className="product-grid">
             {featured.map((product) => (
@@ -165,13 +133,105 @@ export default async function HomePage() {
         </div>
       </section>
 
-      <section className="section">
+      <section className="section band" id="waitlist" aria-labelledby="command-home-heading">
+        <div className="wrap command-home">
+          <div>
+            <p className="eyebrow">Coming next</p>
+            <h2 id="command-home-heading">The UUO Command Center is coming.</h2>
+            <p className="brand-by">by Unhinged. Unfiltered. Organized.</p>
+            <p className="lede">
+              We are testing a digital space designed to help caregivers organize schedules, medications,
+              follow-ups, documents, and help from family. Join the interest list for updates and possible
+              early testing opportunities.
+            </p>
+            <p className="prelaunch-note">App in private testing; features and availability may change.</p>
+          </div>
+          <WaitlistForm />
+        </div>
+      </section>
+
+      <section className="section" aria-labelledby="story-heading">
         <div className="wrap story">
-          <Portrait src={copy.storyImage} alt={copy.storyImageAlt} />
+          <Portrait src="/images/stormi.jpg" alt="Stormi J holding her book, Who the Hell Put Me in Charge?!" />
           <div className="prose">
-            <p className="eyebrow">{copy.storyEyebrow}</p>
-            <h2>{copy.storyHeading}</h2>
-            <StoryBlurb text={copy.storyBody} moreLabel={copy.storyLinkText || "Read the story"} />
+            <p className="eyebrow">Stormi J.</p>
+            <h2 id="story-heading">I did not plan any of this.</h2>
+            <p>
+              My mom had a stroke. One day I was living my life. The next, I was responsible for
+              medications, appointments, equipment, paperwork, symptoms, and phone calls.
+            </p>
+            <p>
+              I looked for a system. Somewhere to put the list, the bottles, the questions, and the “did
+              we already give that?” I couldn’t find one that sounded like real life, so I made the lists
+              and trackers I needed. Those became the book, the printables, and Unhinged. Unfiltered.
+              Organized.
+            </p>
+            <div className="actions">
+              <ActionLink className="button" href="/about" cta="read-story">
+                Read My Story
+              </ActionLink>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section className="section band" id="checklist" aria-labelledby="checklist-heading">
+        <div className="wrap checklist">
+          <div className="checklist-preview">
+            <Picture
+              src="/images/checklist-teaser.jpg"
+              alt="Top of the First 48 Hours Home checklist: Don’t forget this shit."
+              width={796}
+              height={226}
+              sizes="(max-width: 860px) 100vw, 560px"
+            />
+          </div>
+          <div>
+            <p className="eyebrow">Free</p>
+            <h2 id="checklist-heading">First 48 Hours Home Checklist.</h2>
+            <p className="attitude">Don’t forget this shit.</p>
+            <p>
+              A useful starting point for the day someone comes home and the house is not ready. Leave your
+              email and the checklist downloads. A copy is emailed when delivery is connected.
+            </p>
+            <EmailSignup
+              buttonLabel="Send me the checklist"
+              note="The checklist comes to this email. Notes about new printables are a separate, optional choice."
+            />
+          </div>
+        </div>
+      </section>
+
+      <section className="section" aria-labelledby="professionals-heading">
+        <div className="wrap narrow">
+          <p className="eyebrow">For programs and agencies</p>
+          <h2 id="professionals-heading">Books and printables for the people who send families home.</h2>
+          <p className="lede">
+            Caregiver programs, discharge planners, social workers, and home-care agencies can ask for book
+            information, printables, or a review copy.
+          </p>
+          <div className="actions">
+            <ActionLink className="button" href="/for-professionals" cta="for-professionals">
+              Request Book Information
+            </ActionLink>
+          </div>
+        </div>
+      </section>
+
+      <section className="section band" aria-labelledby="home-faq-heading">
+        <div className="wrap">
+          <div className="section-head">
+            <p className="eyebrow">UUO Command Center, in private testing</p>
+            <h2 id="home-faq-heading">The stuff you should not have to guess.</h2>
+            <p className="lede">
+              These answers describe the UUO Command Center app. Public signup is not open yet.
+            </p>
+          </div>
+          <FaqList items={pricing.preview} />
+          <div className="actions">
+            <ActionLink className="button button-ghost" href="/faq" cta="see-faq">
+              See all FAQs
+            </ActionLink>
           </div>
         </div>
       </section>
@@ -196,43 +256,6 @@ export default async function HomePage() {
           </div>
         </section>
       ) : null}
-
-      <section className="section band" id="checklist">
-        <div className="wrap checklist">
-          <div className="checklist-preview">
-            <Picture
-              src={copy.checklistImage}
-              alt={copy.checklistImageAlt}
-              width={copy.checklistWidth}
-              height={copy.checklistHeight}
-              sizes="(max-width: 860px) 100vw, 560px"
-            />
-          </div>
-          <div>
-            <p className="eyebrow">{copy.checklistEyebrow}</p>
-            <h2>{copy.checklistHeading}</h2>
-            {copy.checklistAttitude ? <p className="attitude">{copy.checklistAttitude}</p> : null}
-            <Paragraphs text={copy.checklistBody} />
-            <EmailSignup buttonLabel={copy.checklistButton} note={copy.checklistNote} />
-          </div>
-        </div>
-      </section>
-
-      <section className="section" aria-labelledby="home-faq-heading">
-        <div className="wrap">
-          <div className="section-head">
-            <p className="eyebrow">UUO Command Center app</p>
-            <h2 id="home-faq-heading">The stuff you should not have to guess.</h2>
-            <p className="lede">These answers are for the UUO Command Center app.</p>
-          </div>
-          <FaqList items={pricing.preview} />
-          <div className="actions">
-            <ActionLink className="button button-ghost" href="/faq" cta="see-faq">
-              See all FAQs
-            </ActionLink>
-          </div>
-        </div>
-      </section>
     </>
   );
 }

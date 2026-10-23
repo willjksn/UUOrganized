@@ -2,7 +2,8 @@ import { NextResponse } from "next/server";
 import { addPerson } from "@/lib/audience";
 import { notifyOwner, sendChecklist } from "@/lib/email";
 import { cleanEmail, cleanText, clientIp, readJson, sameOrigin, tooMany } from "@/lib/http";
-import { downloadToken, saveRecord } from "@/lib/records";
+import { marketingOptIn } from "@/lib/inquiries";
+import { downloadToken, remoteSideEffectsAllowed, saveRecord } from "@/lib/records";
 import { site } from "@/lib/site";
 
 export const runtime = "nodejs";
@@ -33,12 +34,23 @@ export async function POST(request: Request) {
     return NextResponse.json({ error: "Enter a real email address." }, { status: 400 });
   }
 
+  if (!remoteSideEffectsAllowed() && process.env.VERCEL_ENV === "preview") {
+    return NextResponse.json(
+      { error: "This preview does not save checklist addresses or send email." },
+      { status: 503 },
+    );
+  }
+
+  const marketing = marketingOptIn(body.updates);
   await saveRecord({
     type: "checklist",
     email,
+    marketingConsent: marketing,
     createdAt: new Date().toISOString(),
   });
-  await addPerson({ email, source: "checklist" }).catch(() => undefined);
+  if (marketing) {
+    await addPerson({ email, source: "checklist" }).catch(() => undefined);
+  }
 
   const downloadUrl = `${site.url}/api/download?token=${downloadToken()}`;
   const emailed = await sendChecklist(email, downloadUrl);
